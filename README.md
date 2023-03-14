@@ -1,0 +1,1 @@
+Deployed site: https://vitos-exe.github.io/pharmacy-frontend/
