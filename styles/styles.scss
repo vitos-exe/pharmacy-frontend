@@ -250,7 +250,7 @@ main{
   border-radius: 5px;
   padding: 5px;
   margin-bottom: 10px;
-  width: 40%;
+  width: 60%;
   
   input[type="text"] {
     border: none;
@@ -410,8 +410,10 @@ main{
   .medicine-operations{
     flex-wrap: wrap;
     justify-content: space-around;
-    .search-bar{
-      width: 100%;
+  }
+  .search-bar{
+    input{
+      width: 60%;
     }
   }
 
