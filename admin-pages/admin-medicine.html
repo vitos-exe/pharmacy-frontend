@@ -21,55 +21,61 @@
 
     <main>
       <section class="medicine-list">
-        <section class="medicine-buttons">
-          <button class="add-medicine-botton" onclick="openDialog('.medicine-create-dialog')">Add medicine</button>
-          <div class="medicine-create-dialog">
-            <div class="medicine-create-dialog-header">
-              <h2>Add new medicine</h2>
-              <button class="dialog-close" onclick="closeDialog('.medicine-create-dialog')">&times;</button>
+        <div class="medicine-operations">
+          <div class="medicine-buttons">
+            <button class="add-medicine-botton" onclick="openDialog('.medicine-create-dialog')">Add medicine</button>
+            <div class="medicine-create-dialog">
+              <div class="medicine-create-dialog-header">
+                <h2>Add new medicine</h2>
+                <button class="dialog-close" onclick="closeDialog('.medicine-create-dialog')">&times;</button>
+              </div>
+              <form class="medicine-create-dialog-form">
+                <div class="form-group">
+                  <label for="medicine-name">Name</label>
+                  <input type="text" id="medicine-name" name="medicine-name">
+                </div>
+                <div class="form-group">
+                  <label for="medicine-price">Price</label>
+                  <input type="number" min="0" id="medicine-price" name="medicine-price">
+                </div>
+                <div class="form-group">
+                  <label for="medicine-quantity">Quantity</label>
+                  <input type="number" min="0" id="medicine-quantity" name="medicine-quantity">
+                </div>
+                <div class="form-group">
+                  <label for="medicine-description">Description</label>
+                  <input type="text" id="medicine-description" name="medicine-description">
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+              </form>
+            </div>   
+            <button class="demand-list-botton" onclick="openDialog('.demand-list-dialog')">Demand list</button>
+            <div class="demand-list-dialog">
+              <div class="dialog-top"></div>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Medicine A</td>
+                    <td>5 units</td>
+                  </tr>
+                  <tr>
+                    <td>Medicine A</td>
+                    <td>5 units</td>
+                  </tr>
+                  <tr>
+                    <td>Medicine A</td>
+                    <td>5 units</td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="close-button" onclick="closeDialog('.demand-list-dialog');">Close</button>
             </div>
-            <form class="medicine-create-dialog-form">
-              <div class="form-group">
-                <label for="medicine-name">Name</label>
-                <input type="text" id="medicine-name" name="medicine-name">
-              </div>
-              <div class="form-group">
-                <label for="medicine-price">Price</label>
-                <input type="number" min="0" id="medicine-price" name="medicine-price">
-              </div>
-              <div class="form-group">
-                <label for="medicine-quantity">Quantity</label>
-                <input type="number" min="0" id="medicine-quantity" name="medicine-quantity">
-              </div>
-              <div class="form-group">
-                <label for="medicine-description">Description</label>
-                <input type="text" id="medicine-description" name="medicine-description">
-              </div>
-              <button type="submit" class="submit-btn">Submit</button>
-            </form>
-          </div>   
-          <button class="demand-list-botton" onclick="openDialog('.demand-list-dialog')">Demand list</button>
-          <div class="demand-list-dialog">
-            <div class="dialog-top"></div>
-            <table>
-              <tbody>
-                <tr>
-                  <td>Medicine A</td>
-                  <td>5 units</td>
-                </tr>
-                <tr>
-                  <td>Medicine A</td>
-                  <td>5 units</td>
-                </tr>
-                <tr>
-                  <td>Medicine A</td>
-                  <td>5 units</td>
-                </tr>
-              </tbody>
-            </table>
-            <button class="close-button" onclick="closeDialog('.demand-list-dialog');">Close</button>
           </div>
-        </section>
+          <div class="search-bar">
+            <input type="text" placeholder="Search">
+            <button>Go</button>
+          </div>     
+        </div>
         <div class="medicine-grid">
           <div class="medicine-entity">
             <div class="entity-info">

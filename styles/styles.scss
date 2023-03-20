@@ -26,7 +26,7 @@
 @mixin entities-grid{
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1rem;
   margin: 10px auto;
 }
@@ -94,7 +94,6 @@
   }
 }
 
-// +
 @mixin dialog{
   display: none;
   position: fixed;
@@ -109,6 +108,13 @@
   max-width: 400px;
   text-align: center;
   padding: 20px;
+}
+
+@mixin dialog-top{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: $main-button-color;
+  height: 25px;
 }
 
 .navbar {
@@ -160,19 +166,32 @@
       transform: translate(-90%, 0);
       flex-direction: column;
       align-items: center;
-      background-color: $light-yellow;
-      padding: 10px;
+      background-color: white;
+      padding-bottom: 10px;
       border-radius: 10px;
-    
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+      .dialog-top{
+        @include dialog-top;
+        width: 100%;
+      }
+
       .medicine-row {
         display: flex;
         align-items: center;
-        margin-bottom: 1rem;
+        margin: 1rem;
     
         label {
           margin-right: 1rem;
         }
     
+        nput[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          appearance: none;
+          margin: 0;
+        }
+
         input[type="number"] {
           width: 4rem;
           padding: 0.5rem;
@@ -181,6 +200,7 @@
           font-size: 1rem;
           text-align: center;
         }
+
       }
     
       button[type="submit"] {
@@ -210,13 +230,51 @@ main{
   @include layot-element;
 }
 
-.medicine-buttons{
+.medicine-operations{
   display: flex;
-  justify-content: flex-start;
-  .add-medicine-botton,
-  .demand-list-botton{
-    @include main-button;
-    margin: 10px;
+  justify-content: space-between;
+  .medicine-buttons{
+    display: flex;
+    justify-content: flex-start;
+    .add-medicine-botton,
+    .demand-list-botton{
+      @include main-button;
+      margin: 10px;
+    }
+  }
+  
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 40%;
+  
+  input[type="text"] {
+    border: none;
+    flex: 1;
+    margin-right: 10px;
+    font-size: 16px;
+    padding: 5px;
+    &:focus {
+      outline: none;
+    }
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #3e8e41;
+    }
   }
 }
 
@@ -244,7 +302,6 @@ main{
   @include entities-table;
 }
 
-// +
 .login-dialog,
 .user-create-dialog,
 .user-edit-dialog,
@@ -304,7 +361,6 @@ main{
   }
 }
 
-// +
 .order-details-dialog,
 .demand-list-dialog,
 .medicine-info-dialog{
@@ -312,10 +368,7 @@ main{
   padding: 0;
 
   .dialog-top{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    background-color: $main-button-color;
-    height: 25px;
+    @include dialog-top;
   }
 
   .info-field{
@@ -347,6 +400,13 @@ main{
     @include main-button;
     width: 35%;
     margin: 10px 0;
+  }
+}
+
+@media (max-width: 425px) {
+  .medicine-grid,
+  .orders-grid{
+    justify-content: center;
   }
 }
 
