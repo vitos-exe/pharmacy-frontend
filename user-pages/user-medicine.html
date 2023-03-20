@@ -4,63 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pharmacy Service</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="../styles/styles.css">
   </head>
   <body>
     <header>
       <nav class="navbar">
-        <a href="./index.html" class="logo">Pharmacy Service</a>
+        <a href="./user-medicine.html" class="logo">Pharmacy Service</a>
         <ul class="nav-links">
-          <li><a onclick="openDialog('.login-dialog')">Log in</a></li>
-          <div class="login-dialog">
-            <div class="login-dialog-header">
-              <h2>Log in</h2>
-              <button class="dialog-close" onclick="closeDialog('.login-dialog')">&times;</button>
+          <li><a href="./user-orders.html">My orders</a></li>
+          <li><a onclick="openDialog('.user-edit-dialog')">Edit account</a></li>
+          <div class="user-edit-dialog">
+            <div class="user-edit-dialog-header">
+              <h2>Edit User</h2>
+              <button class="dialog-close" onclick="closeDialog('.user-edit-dialog')">&times;</button>
             </div>
-            <form class="login-dialog-form">
-              <div class="form-group">
-                <label for="user-email">Email</label>
-                <input type="email" id="user-email" name="user-email" required>
-              </div>
-              <div class="form-group">
-                <label for="user-password">Password</label>
-                <input type="password" id="user-password" name="user-password" required>
-              </div>
-              <button type="submit" class="submit-btn">Submit</button>
-            </form>
-          </div>        
-          <li><a onclick="openDialog('.user-create-dialog')">Sign up</a></li>
-          <div class="user-create-dialog">
-            <div class="user-create-dialog-header">
-              <h2>Sign up</h2>
-              <button class="dialog-close" onclick="closeDialog('.user-create-dialog')">&times;</button>
-            </div>
-            <form class="user-create-dialog-form">
+            <form class="user-edit-dialog-form">
               <div class="form-group">
                 <label for="user-name">Username</label>
-                <input type="text" id="user-name" name="user-name" required>
+                <input type="text" id="user-name" name="user-name">
               </div>
               <div class="form-group">
                 <label for="user-email">Email</label>
-                <input type="email" id="user-email" name="user-email" required>
+                <input type="email" id="user-email" name="user-email">
               </div>
               <div class="form-group">
                 <label for="user-address">Address</label>
-                <input type="text" id="user-address" name="user-address" required>
+                <input type="text" id="user-address" name="user-address">
               </div>
               <div class="form-group">
                 <label for="user-password">Password</label>
-                <input type="password" id="user-password" name="user-password" required>
+                <input type="password" id="user-password" name="user-password">
               </div>
               <div class="form-group">
                 <label for="user-password-confirm">Confirm password</label>
-                <input type="password" id="user-password-confirm" name="user-password-confirm" required>
+                <input type="password" id="user-password-confirm" name="user-password-confirm">
               </div>
+              <button class="btn-delete">Delete</button>
               <button type="submit" class="submit-btn">Submit</button>
             </form>
-          </div>          
+          </div>        
+          <li><a href="../index.html">Logout</a></li>
         </ul>
-      </nav>
+        <div class="cart-div">
+          <img src="../cart.png" alt="Cart" class="cart-img">
+          <form class="order-form">
+            <div class="dialog-top"></div>
+            <div class="medicine-row">
+              <label for="medicine1">Medicine 1</label>
+              <input type="number" id="medicine1" name="medicine1" min="0" value="1">
+            </div>
+            <div class="medicine-row">
+              <label for="medicine2">Medicine 2</label>
+              <input type="number" id="medicine2" name="medicine2" min="0" value="1">
+            </div>
+            <div class="medicine-row">
+              <label for="medicine3">Medicine 3</label>
+              <input type="number" id="medicine3" name="medicine3" min="0" value="1">
+            </div>
+            <button type="submit">Submit Order</button>
+          </form>
+          
+        </div>
+      </nav> 
     </header>
 
     <main>
@@ -70,7 +75,7 @@
             <input type="text" placeholder="Search">
             <button>Go</button>
           </div>     
-        </div>    
+        </div> 
         <div class="medicine-grid">
           <div class="medicine-entity">
             <div class="entity-info">
@@ -79,6 +84,7 @@
             </div>
             <div class="entity-buttons">
               <button class="more-info-button">More info</button>
+              <button class="add-to-order-button">Add to order</button>
             </div>
           </div>
           <div class="medicine-entity">
@@ -88,6 +94,7 @@
             </div>
             <div class="entity-buttons">
               <button class="more-info-button">More info</button>
+              <button class="add-to-order-button">Add to order</button>
             </div>
           </div>
           <div class="medicine-entity">
@@ -97,6 +104,7 @@
             </div>
             <div class="entity-buttons">
               <button class="more-info-button">More info</button>
+              <button class="add-to-order-button">Add to order</button>
             </div>
           </div>
           <div class="medicine-entity">
@@ -106,6 +114,7 @@
             </div>
             <div class="entity-buttons">
               <button class="more-info-button">More info</button>
+              <button class="add-to-order-button">Add to order</button>
             </div>
           </div>
         </div>
@@ -119,6 +128,11 @@
         </div>
       </section>
     </main>
-    <script src="app.js"></script>
+
+    <footer>
+      <!-- Your footer content goes here -->
+    </footer>
+
+    <script src="../app.js"></script>
   </body>
 </html>

@@ -1,0 +1,464 @@
+@import 'colors';
+
+@mixin layot-element{
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+@mixin main-button{
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: $main-button-color;
+  color: white;
+  border-radius: 10px;    
+  border: none;
+  &:hover {
+    background-color: $main-button-hover-color;
+  }
+}
+
+@mixin entities-grid{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 10px auto;
+}
+
+@mixin grid-entity{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  .entity-info{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    .main-info-field {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    
+    .info-field {
+      font-size: 1.2em;
+    }
+  }
+
+  flex-direction: row;
+    .entity-info{
+      flex-direction: column;
+    }
+    
+  .entity-buttons{
+    button{
+      @include main-button();
+    }
+  }
+}
+
+@mixin entities-table{
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+
+  th {
+    background-color: $table-row-color;
+  }
+
+  tr:hover{
+    background-color: $table-row-hover-color;
+  }
+
+  .action-column{
+    display: block;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid $border-color;
+  }
+
+  button{
+    @include main-button;
+    
+  }
+}
+
+@mixin dialog{
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 45%;
+  min-width: 250px;
+  max-width: 400px;
+  text-align: center;
+  padding: 20px;
+}
+
+@mixin dialog-top{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: $main-button-color;
+  height: 25px;
+}
+
+.navbar {
+  @include layot-element;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+
+  .logo {
+    font-size: 3rem;
+    font-weight: bold;
+    color: $main-button-color;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: space-around;
+    padding-inline-start: 0;
+    min-width: 40%;
+    list-style-type: none;
+    li {
+      margin: 5px;
+      font-size: 1.5em;
+      a {
+        color: $main-button-color;
+        text-decoration: none;
+        font-weight: bold;
+
+        &:hover {
+          color: $light-yellow;
+        }
+      }
+    }
+  }
+
+  .cart-div {
+    position: relative; 
+    display: inline-block;
+
+    .cart-img{
+      height: 3em;
+    }
+
+    .order-form {
+      display: none;
+      position: absolute;
+      transform: translate(-90%, 0);
+      flex-direction: column;
+      align-items: center;
+      background-color: white;
+      padding-bottom: 10px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+      .dialog-top{
+        @include dialog-top;
+        width: 100%;
+      }
+
+      .medicine-row {
+        display: flex;
+        align-items: center;
+        margin: 1rem;
+    
+        label {
+          margin-right: 1rem;
+        }
+    
+        nput[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          appearance: none;
+          margin: 0;
+        }
+
+        input[type="number"] {
+          width: 4rem;
+          padding: 0.5rem;
+          border-radius: 0.25rem;
+          border: 1px solid gray;
+          font-size: 1rem;
+          text-align: center;
+        }
+
+      }
+    
+      button[type="submit"] {
+        background-color: blue;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+        cursor: pointer;
+    
+        &:hover {
+          background-color: darkblue;
+        }
+      }
+    
+    }
+    
+    &:hover .order-form {
+      display: flex; /* show on hover */
+    }
+  }
+  
+}
+
+main{
+  @include layot-element;
+}
+
+.medicine-operations{
+  display: flex;
+  justify-content: space-between;
+  .medicine-buttons{
+    display: flex;
+    justify-content: flex-start;
+    .add-medicine-botton,
+    .demand-list-botton{
+      @include main-button;
+      margin: 10px;
+    }
+  }
+  
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 2px solid $border-color;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 40%;
+  
+  input[type="text"] {
+    border: none;
+    flex: 1;
+    margin-right: 10px;
+    font-size: 16px;
+    padding: 5px;
+    &:focus {
+      outline: none;
+    }
+  }
+  
+  button {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: red;
+    }
+  }
+}
+
+.medicine-grid {
+  @include entities-grid;
+
+  .medicine-entity {
+    @include grid-entity;
+  }
+}
+
+.orders-grid {
+  @include entities-grid;
+
+  .order-entity {
+    @include grid-entity;
+  }
+}
+
+.users-table {
+  @include entities-table;
+}
+
+.orders-table {
+  @include entities-table;
+}
+
+.login-dialog,
+.user-create-dialog,
+.user-edit-dialog,
+.medicine-create-dialog,
+.medicine-edit-dialog {
+  @include dialog;
+  
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    
+    h2 {
+      margin: 0;
+    }
+    
+    .dialog-close {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+  
+  &-form {
+    display: flex;
+    flex-direction: column;
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      
+      label {
+        margin-bottom: 5px;
+      }
+
+      input,
+      select {
+        padding: 10px;
+        border: 1px solid $border-color;
+        border-radius: 5px;
+        font-size: 16px;
+        width: 94%;
+        
+        &:focus {
+          outline: none;
+          border-color: $main-button-color;
+        }
+      }
+    }
+    
+    button {
+      @include main-button;
+    }
+  }
+}
+
+.order-details-dialog,
+.demand-list-dialog,
+.medicine-info-dialog{
+  @include dialog;
+  padding: 0;
+
+  .dialog-top{
+    @include dialog-top;
+  }
+
+  .info-field{
+    margin: 10px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+
+    tbody {
+      margin: 20px;
+      tr {
+
+        &:hover {
+          background-color: $table-row-color;
+        }
+
+        td {
+          text-align: center;
+          width: 50%;
+          padding: 10px;
+        }
+      }
+    }
+  }
+  .close-button{
+    @include main-button;
+    width: 35%;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 425px) {
+  .medicine-grid,
+  .orders-grid{
+    justify-content: center;
+  }
+
+  .medicine-operations{
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .search-bar{
+      width: 100%;
+    }
+  }
+
+}
+
+@media (max-width: 767px) {
+  .navbar{
+    justify-content: flex-end;
+  }
+
+  .medicine-entity,
+  .order-entity {
+    flex-basis: 100%; 
+    max-width: 80%; 
+  }
+  .users-table,
+  .orders-table {
+    th,
+    td {
+      display: block;
+      width: 93%;
+    }
+
+    .action-column {
+      flex-direction: column;
+      
+      button{
+        display: inline-block;
+        text-align: center;
+      };
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .medicine-entity,
+  .order-entity {
+    flex-basis: calc((100% - 3rem) / 2);
+    max-width: 40%; /* Two entities per row */
+  }
+}
+
+@media (min-width: 992px) {
+  .medicine-entity,
+  .order-entity {
+    flex-basis: calc((100% - 4rem) / 3);
+    max-width: 25%; /* Three entities per row */
+  }
+}
+

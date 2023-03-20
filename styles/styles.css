@@ -1,0 +1,565 @@
+.navbar {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+.navbar .logo {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #007bff;
+}
+.navbar .nav-links {
+  display: flex;
+  justify-content: space-around;
+  padding-inline-start: 0;
+  min-width: 40%;
+  list-style-type: none;
+}
+.navbar .nav-links li {
+  margin: 5px;
+  font-size: 1.5em;
+}
+.navbar .nav-links li a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+.navbar .nav-links li a:hover {
+  color: rgba(166, 255, 0, 0.7411764706);
+}
+.navbar .cart-div {
+  position: relative;
+  display: inline-block;
+}
+.navbar .cart-div .cart-img {
+  height: 3em;
+}
+.navbar .cart-div .order-form {
+  display: none;
+  position: absolute;
+  transform: translate(-90%, 0);
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.navbar .cart-div .order-form .dialog-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #007bff;
+  height: 25px;
+  width: 100%;
+}
+.navbar .cart-div .order-form .medicine-row {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+.navbar .cart-div .order-form .medicine-row label {
+  margin-right: 1rem;
+}
+.navbar .cart-div .order-form .medicine-row nput[type=number]::-webkit-inner-spin-button,
+.navbar .cart-div .order-form .medicine-row input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+.navbar .cart-div .order-form .medicine-row input[type=number] {
+  width: 4rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid gray;
+  font-size: 1rem;
+  text-align: center;
+}
+.navbar .cart-div .order-form button[type=submit] {
+  background-color: blue;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.navbar .cart-div .order-form button[type=submit]:hover {
+  background-color: darkblue;
+}
+.navbar .cart-div:hover .order-form {
+  display: flex; /* show on hover */
+}
+
+main {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.medicine-operations {
+  display: flex;
+  justify-content: space-between;
+}
+.medicine-operations .medicine-buttons {
+  display: flex;
+  justify-content: flex-start;
+}
+.medicine-operations .medicine-buttons .add-medicine-botton,
+.medicine-operations .medicine-buttons .demand-list-botton {
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  margin: 10px;
+}
+.medicine-operations .medicine-buttons .add-medicine-botton:hover,
+.medicine-operations .medicine-buttons .demand-list-botton:hover {
+  background-color: #0D47A1;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 40%;
+}
+.search-bar input[type=text] {
+  border: none;
+  flex: 1;
+  margin-right: 10px;
+  font-size: 16px;
+  padding: 5px;
+}
+.search-bar input[type=text]:focus {
+  outline: none;
+}
+.search-bar button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+.search-bar button:hover {
+  background-color: red;
+}
+
+.medicine-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 10px auto;
+}
+.medicine-grid .medicine-entity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  flex-direction: row;
+}
+.medicine-grid .medicine-entity .entity-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.medicine-grid .medicine-entity .entity-info .main-info-field {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.medicine-grid .medicine-entity .entity-info .info-field {
+  font-size: 1.2em;
+}
+.medicine-grid .medicine-entity .entity-info {
+  flex-direction: column;
+}
+.medicine-grid .medicine-entity .entity-buttons button {
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+.medicine-grid .medicine-entity .entity-buttons button:hover {
+  background-color: #0D47A1;
+}
+
+.orders-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 10px auto;
+}
+.orders-grid .order-entity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  flex-direction: row;
+}
+.orders-grid .order-entity .entity-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.orders-grid .order-entity .entity-info .main-info-field {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.orders-grid .order-entity .entity-info .info-field {
+  font-size: 1.2em;
+}
+.orders-grid .order-entity .entity-info {
+  flex-direction: column;
+}
+.orders-grid .order-entity .entity-buttons button {
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+.orders-grid .order-entity .entity-buttons button:hover {
+  background-color: #0D47A1;
+}
+
+.users-table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+.users-table th {
+  background-color: #f2f2f2;
+}
+.users-table tr:hover {
+  background-color: #f5f5f5;
+}
+.users-table .action-column {
+  display: block;
+}
+.users-table th, .users-table td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+.users-table button {
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+.users-table button:hover {
+  background-color: #0D47A1;
+}
+
+.orders-table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+.orders-table th {
+  background-color: #f2f2f2;
+}
+.orders-table tr:hover {
+  background-color: #f5f5f5;
+}
+.orders-table .action-column {
+  display: block;
+}
+.orders-table th, .orders-table td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+.orders-table button {
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+.orders-table button:hover {
+  background-color: #0D47A1;
+}
+
+.login-dialog,
+.user-create-dialog,
+.user-edit-dialog,
+.medicine-create-dialog,
+.medicine-edit-dialog {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 45%;
+  min-width: 250px;
+  max-width: 400px;
+  text-align: center;
+  padding: 20px;
+}
+.login-dialog-header,
+.user-create-dialog-header,
+.user-edit-dialog-header,
+.medicine-create-dialog-header,
+.medicine-edit-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.login-dialog-header h2,
+.user-create-dialog-header h2,
+.user-edit-dialog-header h2,
+.medicine-create-dialog-header h2,
+.medicine-edit-dialog-header h2 {
+  margin: 0;
+}
+.login-dialog-header .dialog-close,
+.user-create-dialog-header .dialog-close,
+.user-edit-dialog-header .dialog-close,
+.medicine-create-dialog-header .dialog-close,
+.medicine-edit-dialog-header .dialog-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.login-dialog-form,
+.user-create-dialog-form,
+.user-edit-dialog-form,
+.medicine-create-dialog-form,
+.medicine-edit-dialog-form {
+  display: flex;
+  flex-direction: column;
+}
+.login-dialog-form .form-group,
+.user-create-dialog-form .form-group,
+.user-edit-dialog-form .form-group,
+.medicine-create-dialog-form .form-group,
+.medicine-edit-dialog-form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.login-dialog-form .form-group label,
+.user-create-dialog-form .form-group label,
+.user-edit-dialog-form .form-group label,
+.medicine-create-dialog-form .form-group label,
+.medicine-edit-dialog-form .form-group label {
+  margin-bottom: 5px;
+}
+.login-dialog-form .form-group input,
+.login-dialog-form .form-group select,
+.user-create-dialog-form .form-group input,
+.user-create-dialog-form .form-group select,
+.user-edit-dialog-form .form-group input,
+.user-edit-dialog-form .form-group select,
+.medicine-create-dialog-form .form-group input,
+.medicine-create-dialog-form .form-group select,
+.medicine-edit-dialog-form .form-group input,
+.medicine-edit-dialog-form .form-group select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 94%;
+}
+.login-dialog-form .form-group input:focus,
+.login-dialog-form .form-group select:focus,
+.user-create-dialog-form .form-group input:focus,
+.user-create-dialog-form .form-group select:focus,
+.user-edit-dialog-form .form-group input:focus,
+.user-edit-dialog-form .form-group select:focus,
+.medicine-create-dialog-form .form-group input:focus,
+.medicine-create-dialog-form .form-group select:focus,
+.medicine-edit-dialog-form .form-group input:focus,
+.medicine-edit-dialog-form .form-group select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.login-dialog-form button,
+.user-create-dialog-form button,
+.user-edit-dialog-form button,
+.medicine-create-dialog-form button,
+.medicine-edit-dialog-form button {
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+.login-dialog-form button:hover,
+.user-create-dialog-form button:hover,
+.user-edit-dialog-form button:hover,
+.medicine-create-dialog-form button:hover,
+.medicine-edit-dialog-form button:hover {
+  background-color: #0D47A1;
+}
+
+.order-details-dialog,
+.demand-list-dialog,
+.medicine-info-dialog {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 45%;
+  min-width: 250px;
+  max-width: 400px;
+  text-align: center;
+  padding: 20px;
+  padding: 0;
+}
+.order-details-dialog .dialog-top,
+.demand-list-dialog .dialog-top,
+.medicine-info-dialog .dialog-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #007bff;
+  height: 25px;
+}
+.order-details-dialog .info-field,
+.demand-list-dialog .info-field,
+.medicine-info-dialog .info-field {
+  margin: 10px;
+}
+.order-details-dialog table,
+.demand-list-dialog table,
+.medicine-info-dialog table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0;
+}
+.order-details-dialog table tbody,
+.demand-list-dialog table tbody,
+.medicine-info-dialog table tbody {
+  margin: 20px;
+}
+.order-details-dialog table tbody tr:hover,
+.demand-list-dialog table tbody tr:hover,
+.medicine-info-dialog table tbody tr:hover {
+  background-color: #f2f2f2;
+}
+.order-details-dialog table tbody tr td,
+.demand-list-dialog table tbody tr td,
+.medicine-info-dialog table tbody tr td {
+  text-align: center;
+  width: 50%;
+  padding: 10px;
+}
+.order-details-dialog .close-button,
+.demand-list-dialog .close-button,
+.medicine-info-dialog .close-button {
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  width: 35%;
+  margin: 10px 0;
+}
+.order-details-dialog .close-button:hover,
+.demand-list-dialog .close-button:hover,
+.medicine-info-dialog .close-button:hover {
+  background-color: #0D47A1;
+}
+
+@media (max-width: 425px) {
+  .medicine-grid,
+  .orders-grid {
+    justify-content: center;
+  }
+  .medicine-operations {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .medicine-operations .search-bar {
+    width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .navbar {
+    justify-content: flex-end;
+  }
+  .medicine-entity,
+  .order-entity {
+    flex-basis: 100%;
+    max-width: 80%;
+  }
+  .users-table th,
+  .users-table td,
+  .orders-table th,
+  .orders-table td {
+    display: block;
+    width: 93%;
+  }
+  .users-table .action-column,
+  .orders-table .action-column {
+    flex-direction: column;
+  }
+  .users-table .action-column button,
+  .orders-table .action-column button {
+    display: inline-block;
+    text-align: center;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .medicine-entity,
+  .order-entity {
+    flex-basis: calc((100% - 3rem) / 2);
+    max-width: 40%; /* Two entities per row */
+  }
+}
+@media (min-width: 992px) {
+  .medicine-entity,
+  .order-entity {
+    flex-basis: calc((100% - 4rem) / 3);
+    max-width: 25%; /* Three entities per row */
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

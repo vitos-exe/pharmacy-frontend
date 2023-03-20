@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Service</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="./user-medicine.html" class="logo">Pharmacy Service</a>
+        <ul class="nav-links">
+          <li><a href="./user-orders.html">My orders</a></li>
+          <li><a onclick="openDialog('.user-edit-dialog')">Edit account</a></li>
+          <div class="user-edit-dialog">
+            <div class="user-edit-dialog-header">
+              <h2>Edit User</h2>
+              <button class="dialog-close" onclick="closeDialog('.user-edit-dialog')">&times;</button>
+            </div>
+            <form class="user-edit-dialog-form">
+              <div class="form-group">
+                <label for="user-name">Username</label>
+                <input type="text" id="user-name" name="user-name">
+              </div>
+              <div class="form-group">
+                <label for="user-email">Email</label>
+                <input type="email" id="user-email" name="user-email">
+              </div>
+              <div class="form-group">
+                <label for="user-address">Address</label>
+                <input type="text" id="user-address" name="user-address">
+              </div>
+              <div class="form-group">
+                <label for="user-password">Password</label>
+                <input type="password" id="user-password" name="user-password">
+              </div>
+              <div class="form-group">
+                <label for="user-password-confirm">Confirm password</label>
+                <input type="password" id="user-password-confirm" name="user-password-confirm">
+              </div>
+              <button class="btn-delete">Delete</button>
+              <button type="submit" class="submit-btn">Submit</button>
+            </form>
+          </div>        
+          <li><a href="../index.html">Logout</a></li>
+        </ul>
+        <div class="cart-div">
+          <img src="../cart.png" alt="Cart" class="cart-img">
+          <form class="order-form">
+            <div class="medicine-row">
+              <label for="medicine1">Medicine 1</label>
+              <input type="number" id="medicine1" name="medicine1" min="0" value="1">
+            </div>
+            <div class="medicine-row">
+              <label for="medicine2">Medicine 2</label>
+              <input type="number" id="medicine2" name="medicine2" min="0" value="1">
+            </div>
+            <div class="medicine-row">
+              <label for="medicine3">Medicine 3</label>
+              <input type="number" id="medicine3" name="medicine3" min="0" value="1">
+            </div>
+            <button type="submit">Submit Order</button>
+          </form>
+        </div>
+      </nav> 
+    </header>
+
+    <main>
+      <section class="orders-list">
+        <div class="search-bar">
+          <input type="text" placeholder="Search">
+          <button>Go</button>
+        </div>   
+        <div class="orders-grid">
+          <div class="order-entity">
+            <div class="entity-info">
+              <div class="main-info-field">Order 1</div>
+              <div class="info-field">2020-11-11</div>
+              <div class="info-field">Delivered</div>
+            </div>
+            <div class="entity-buttons">
+              <button class="order-details-button" >More info</button>
+            </div>
+          </div>
+          <div class="order-entity">
+            <div class="entity-info">
+              <div class="main-info-field">Order 2</div>
+              <div class="info-field">2020-11-12</div>
+              <div class="info-field">Pending</div>
+            </div>
+            <div class="entity-buttons">
+              <button class="order-details-button" >More info</button>
+            </div>
+          </div>
+          <div class="order-entity">
+            <div class="entity-info">
+              <div class="main-info-field">Order 3</div>
+              <div class="info-field">2020-11-13</div>
+              <div class="info-field">Delivered</div>
+            </div>
+            <div class="entity-buttons">
+              <button class="order-details-button" >More info</button>
+            </div>
+          </div>
+          <div class="order-entity">
+            <div class="entity-info">
+              <div class="main-info-field">Order 4</div>
+              <div class="info-field">2020-11-14</div>
+              <div class="info-field">Pending</div>
+            </div>
+            <div class="entity-buttons">
+              <button class="order-details-button" >More info</button>
+            </div>
+          </div>
+        </div>
+        <div class="order-details-dialog">
+          <div class="dialog-top"></div>
+          <table>
+            <tbody>
+              <tr>
+                <td>Medicine A</td>
+                <td>5 units</td>
+              </tr>
+              <tr>
+                <td>Medicine B</td>
+                <td>3 units</td>
+              </tr>
+              <tr>
+                <td>Medicine C</td>
+                <td>9 units</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="close-button" onclick="closeDialog('.order-details-dialog');">Close</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <!-- Your footer content goes here -->
+    </footer>
+
+    <script src="../app.js"></script>
+  </body>
+</html>
