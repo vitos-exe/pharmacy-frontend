@@ -1,18 +1,19 @@
 @import 'colors';
 
-// Mixins
+// +
 @mixin layot-element{
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  margin: 1em;
-  padding: 1em;
+  margin: 10px;
+  padding: 10px;
 }
 
+// +
 @mixin main-button{
-  margin: 1rem;
-  padding: 0.5rem 0.5rem;
-  font-size: 16px;
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
   background-color: $main-button-color;
   color: white;
   border-radius: 10px;    
@@ -31,19 +32,36 @@
 }
 
 @mixin grid-entity{
-  background-color: white;
-  padding: 1rem;
-  box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
   border-radius: 10px;
-  text-align: center;
-  .main-info-field{
-    font-size: 18px;
+  padding: 10px;
+  margin-bottom: 10px;
+  .entity-info{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    .main-info-field {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    
+    .info-field {
+      font-size: 1.2em;
+    }
   }
-  .info-field{
-    font-size: 14px;
-  }
-  button{
-    @include main-button();
+
+  flex-direction: row;
+    .entity-info{
+      flex-direction: column;
+    }
+    
+  .entity-buttons{
+    button{
+      @include main-button();
+    }
   }
 }
 
@@ -76,26 +94,25 @@
   }
 }
 
+// +
 @mixin dialog{
   display: none;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: white;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  z-index: 999;
   width: 45%;
   min-width: 250px;
+  max-width: 400px;
   text-align: center;
-}
-
-header {
-  @include layot-element;
+  padding: 20px;
 }
 
 .navbar {
+  @include layot-element;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -137,37 +154,53 @@ header {
       height: 3em;
     }
 
-    .cart-dropdown {
+    .order-form {
+      display: none;
       position: absolute;
-      right: 0;
-      top: 2em;
-      list-style-type: none;
-      display: none; /* hide by default */
+      transform: translate(-90%, 0);
+      flex-direction: column;
+      align-items: center;
       background-color: $light-yellow;
+      padding: 10px;
       border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      padding: 1rem;
-      min-width: 150px;
-      li {
-        margin-bottom: 0.5rem;
-      }
-
-      button {
-        border: none;
-        padding: 0.5rem 1rem;
-        background-color: $primary-color;
-        color: white;
-        transition: background-color 0.3s ease-in-out;
-
-        &:hover {
-          background-color: red;
+    
+      .medicine-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    
+        label {
+          margin-right: 1rem;
         }
-        width: 100%;
+    
+        input[type="number"] {
+          width: 4rem;
+          padding: 0.5rem;
+          border-radius: 0.25rem;
+          border: 1px solid gray;
+          font-size: 1rem;
+          text-align: center;
+        }
       }
+    
+      button[type="submit"] {
+        background-color: blue;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+        cursor: pointer;
+    
+        &:hover {
+          background-color: darkblue;
+        }
+      }
+    
     }
     
-    &:hover .cart-dropdown {
-      display: block; /* show on hover */
+    &:hover .order-form {
+      display: flex; /* show on hover */
     }
   }
   
@@ -180,7 +213,8 @@ main{
 .medicine-buttons{
   display: flex;
   justify-content: flex-start;
-  button{
+  .add-medicine-botton,
+  .demand-list-botton{
     @include main-button;
     margin: 10px;
   }
@@ -199,19 +233,6 @@ main{
 
   .order-entity {
     @include grid-entity;
-    
-    .order-name {
-      font-size: 20px;
-      font-weight: bold;
-    }
-    
-    .order-date {
-      font-size: 16px;
-    }
-
-    .order-status {
-      font-size: 16px;
-    }
   }
 }
 
@@ -223,13 +244,13 @@ main{
   @include entities-table;
 }
 
+// +
 .login-dialog,
 .user-create-dialog,
 .user-edit-dialog,
 .medicine-create-dialog,
 .medicine-edit-dialog {
   @include dialog;
-  padding: 20px;
   
   &-header {
     display: flex;
@@ -278,24 +299,29 @@ main{
     }
     
     button {
-      @include main-button();
+      @include main-button;
     }
   }
 }
 
+// +
 .order-details-dialog,
 .demand-list-dialog,
 .medicine-info-dialog{
   @include dialog;
+  padding: 0;
+
   .dialog-top{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    background-color: $main-button-hover-color;
-    height: 40px;
+    background-color: $main-button-color;
+    height: 25px;
   }
-  .medicine-info-name{
-    text-align: center;
+
+  .info-field{
+    margin: 10px;
   }
+
   table {
     width: 100%;
     border-collapse: collapse;
@@ -304,6 +330,7 @@ main{
     tbody {
       margin: 20px;
       tr {
+
         &:hover {
           background-color: $table-row-color;
         }
@@ -324,6 +351,10 @@ main{
 }
 
 @media (max-width: 767px) {
+  .navbar{
+    justify-content: flex-end;
+  }
+
   .medicine-entity,
   .order-entity {
     flex-basis: 100%; 
