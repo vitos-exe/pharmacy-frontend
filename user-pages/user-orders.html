@@ -47,11 +47,21 @@
         </ul>
         <div class="cart-div">
           <img src="../cart.png" alt="Cart" class="cart-img">
-          <ul class="cart-dropdown">
-            <li>Selected medicine-to-order</li>
-            <li>Selected medicine-to-order</li>
-            <li><button>Make order</button></li>
-          </ul>
+          <form class="order-form">
+            <div class="medicine-row">
+              <label for="medicine1">Medicine 1</label>
+              <input type="number" id="medicine1" name="medicine1" min="0" value="1">
+            </div>
+            <div class="medicine-row">
+              <label for="medicine2">Medicine 2</label>
+              <input type="number" id="medicine2" name="medicine2" min="0" value="1">
+            </div>
+            <div class="medicine-row">
+              <label for="medicine3">Medicine 3</label>
+              <input type="number" id="medicine3" name="medicine3" min="0" value="1">
+            </div>
+            <button type="submit">Submit Order</button>
+          </form>
         </div>
       </nav> 
     </header>
