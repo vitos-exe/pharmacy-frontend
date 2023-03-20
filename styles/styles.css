@@ -13,7 +13,7 @@
 .navbar .logo {
   font-size: 3rem;
   font-weight: bold;
-  color: #008080;
+  color: #007bff;
 }
 .navbar .nav-links {
   display: flex;
@@ -27,7 +27,7 @@
   font-size: 1.5em;
 }
 .navbar .nav-links li a {
-  color: #008080;
+  color: #007bff;
   text-decoration: none;
   font-weight: bold;
 }
@@ -132,7 +132,7 @@ main {
 .search-bar {
   display: flex;
   align-items: center;
-  border: 2px solid #ccc;
+  border: 2px solid #ddd;
   border-radius: 5px;
   padding: 5px;
   margin-bottom: 10px;
@@ -157,7 +157,7 @@ main {
   cursor: pointer;
 }
 .search-bar button:hover {
-  background-color: #3e8e41;
+  background-color: red;
 }
 
 .medicine-grid {

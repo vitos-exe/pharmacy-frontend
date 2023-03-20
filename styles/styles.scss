@@ -1,6 +1,5 @@
 @import 'colors';
 
-// +
 @mixin layot-element{
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -9,7 +8,6 @@
   padding: 10px;
 }
 
-// +
 @mixin main-button{
   margin: 10px;
   padding: 10px;
@@ -128,7 +126,7 @@
   .logo {
     font-size: 3rem;
     font-weight: bold;
-    color: $primary-color;
+    color: $main-button-color;
   }
 
   .nav-links {
@@ -141,7 +139,7 @@
       margin: 5px;
       font-size: 1.5em;
       a {
-        color: $primary-color;
+        color: $main-button-color;
         text-decoration: none;
         font-weight: bold;
 
@@ -248,7 +246,7 @@ main{
 .search-bar {
   display: flex;
   align-items: center;
-  border: 2px solid #ccc;
+  border: 2px solid $border-color;
   border-radius: 5px;
   padding: 5px;
   margin-bottom: 10px;
@@ -266,14 +264,14 @@ main{
   }
   
   button {
-    background-color: #4CAF50;
+    background-color: $primary-color;
     color: white;
     border: none;
     border-radius: 5px;
     padding: 10px;
     cursor: pointer;
     &:hover {
-      background-color: #3e8e41;
+      background-color: red;
     }
   }
 }
