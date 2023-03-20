@@ -513,6 +513,13 @@ main {
   .orders-grid {
     justify-content: center;
   }
+  .medicine-operations {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .medicine-operations .search-bar {
+    width: 100%;
+  }
 }
 @media (max-width: 767px) {
   .navbar {
