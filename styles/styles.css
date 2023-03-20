@@ -89,10 +89,10 @@ main {
 .medicine-buttons button {
   margin: 1rem;
   padding: 0.5rem 0.5rem;
-  font-size: 1.5vw;
+  font-size: 16px;
   background-color: #007bff;
-  color: #fff;
-  border-radius: 0.25rem;
+  color: white;
+  border-radius: 10px;
   border: none;
   margin: 10px;
 }
@@ -105,41 +105,28 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 .medicine-grid .medicine-entity {
-  flex: 1 0 20%;
-  max-width: 20%;
-  background-color: #fff;
+  background-color: white;
   padding: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
+  text-align: center;
 }
 .medicine-grid .medicine-entity .main-info-field {
-  font-size: 2vw;
+  font-size: 18px;
 }
 .medicine-grid .medicine-entity .info-field {
-  font-size: 1vw;
+  font-size: 14px;
 }
 .medicine-grid .medicine-entity button {
   margin: 1rem;
   padding: 0.5rem 0.5rem;
-  font-size: 1.5vw;
+  font-size: 16px;
   background-color: #007bff;
-  color: #fff;
-  border-radius: 0.25rem;
-  border: none;
-}
-.medicine-grid .medicine-entity button:hover {
-  background-color: #0D47A1;
-}
-.medicine-grid .medicine-entity button {
-  margin: 1rem;
-  padding: 0.5rem 0.5rem;
-  font-size: 1.5vw;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 0.25rem;
+  color: white;
+  border-radius: 10px;
   border: none;
 }
 .medicine-grid .medicine-entity button:hover {
@@ -151,29 +138,28 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 .orders-grid .order-entity {
-  flex: 1 0 20%;
-  max-width: 20%;
-  background-color: #fff;
+  background-color: white;
   padding: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
+  text-align: center;
 }
 .orders-grid .order-entity .main-info-field {
-  font-size: 2vw;
+  font-size: 18px;
 }
 .orders-grid .order-entity .info-field {
-  font-size: 1vw;
+  font-size: 14px;
 }
 .orders-grid .order-entity button {
   margin: 1rem;
   padding: 0.5rem 0.5rem;
-  font-size: 1.5vw;
+  font-size: 16px;
   background-color: #007bff;
-  color: #fff;
-  border-radius: 0.25rem;
+  color: white;
+  border-radius: 10px;
   border: none;
 }
 .orders-grid .order-entity button:hover {
@@ -185,23 +171,9 @@ main {
 }
 .orders-grid .order-entity .order-date {
   font-size: 16px;
-  color: #666;
 }
 .orders-grid .order-entity .order-status {
   font-size: 16px;
-  color: #666;
-}
-.orders-grid .order-entity button {
-  margin: 1rem;
-  padding: 0.5rem 0.5rem;
-  font-size: 1.5vw;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 0.25rem;
-  border: none;
-}
-.orders-grid .order-entity button:hover {
-  background-color: #0D47A1;
 }
 
 .users-table {
@@ -226,10 +198,10 @@ main {
 .users-table button {
   margin: 1rem;
   padding: 0.5rem 0.5rem;
-  font-size: 1.5vw;
+  font-size: 16px;
   background-color: #007bff;
-  color: #fff;
-  border-radius: 0.25rem;
+  color: white;
+  border-radius: 10px;
   border: none;
 }
 .users-table button:hover {
@@ -258,10 +230,10 @@ main {
 .orders-table button {
   margin: 1rem;
   padding: 0.5rem 0.5rem;
-  font-size: 1.5vw;
+  font-size: 16px;
   background-color: #007bff;
-  color: #fff;
-  border-radius: 0.25rem;
+  color: white;
+  border-radius: 10px;
   border: none;
 }
 .orders-table button:hover {
@@ -349,7 +321,7 @@ main {
 .medicine-edit-dialog-form .form-group input,
 .medicine-edit-dialog-form .form-group select {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 16px;
   width: 94%;
@@ -365,28 +337,27 @@ main {
 .medicine-edit-dialog-form .form-group input:focus,
 .medicine-edit-dialog-form .form-group select:focus {
   outline: none;
-  border-color: #0077ff;
+  border-color: #007bff;
 }
 .login-dialog-form button,
 .user-create-dialog-form button,
 .user-edit-dialog-form button,
 .medicine-create-dialog-form button,
 .medicine-edit-dialog-form button {
-  background-color: #0077ff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
+  margin: 1rem;
+  padding: 0.5rem 0.5rem;
   font-size: 16px;
-  cursor: pointer;
-  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 10px;
+  border: none;
 }
 .login-dialog-form button:hover,
 .user-create-dialog-form button:hover,
 .user-edit-dialog-form button:hover,
 .medicine-create-dialog-form button:hover,
 .medicine-edit-dialog-form button:hover {
-  background-color: #005ae6;
+  background-color: #0D47A1;
 }
 
 .order-details-dialog,
@@ -447,10 +418,10 @@ main {
 .medicine-info-dialog .close-button {
   margin: 1rem;
   padding: 0.5rem 0.5rem;
-  font-size: 1.5vw;
+  font-size: 16px;
   background-color: #007bff;
-  color: #fff;
-  border-radius: 0.25rem;
+  color: white;
+  border-radius: 10px;
   border: none;
   width: 35%;
   margin: 10px 0;
@@ -464,8 +435,8 @@ main {
 @media (max-width: 767px) {
   .medicine-entity,
   .order-entity {
-    flex-basis: 100%; /* Force each entity to take up full width */
-    max-width: 100%; /* Ensure each entity doesn't exceed full width */
+    flex-basis: 100%;
+    max-width: 80%;
   }
   .users-table th,
   .users-table td,
@@ -487,13 +458,15 @@ main {
 @media (min-width: 768px) and (max-width: 991px) {
   .medicine-entity,
   .order-entity {
-    flex-basis: calc((100% - 3rem) / 2); /* Two entities per row */
+    flex-basis: calc((100% - 3rem) / 2);
+    max-width: 40%; /* Two entities per row */
   }
 }
 @media (min-width: 992px) {
   .medicine-entity,
   .order-entity {
-    flex-basis: calc((100% - 4rem) / 3); /* Three entities per row */
+    flex-basis: calc((100% - 4rem) / 3);
+    max-width: 25%; /* Three entities per row */
   }
 }
 

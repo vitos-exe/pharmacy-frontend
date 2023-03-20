@@ -12,13 +12,13 @@
 @mixin main-button{
   margin: 1rem;
   padding: 0.5rem 0.5rem;
-  font-size: 1.5vw;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 0.25rem;    
+  font-size: 16px;
+  background-color: $main-button-color;
+  color: white;
+  border-radius: 10px;    
   border: none;
   &:hover {
-    background-color: #0D47A1;
+    background-color: $main-button-hover-color;
   }
 }
 
@@ -27,21 +27,20 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 @mixin grid-entity{
-  flex: 1 0 20%;
-  max-width: 20%; 
-  background-color: #fff;
+  background-color: white;
   padding: 1rem;
   box-shadow: 0 0 10px rgb(0 0 0 / 50%);
   border-radius: 10px;
+  text-align: center;
   .main-info-field{
-    font-size: 2vw;
+    font-size: 18px;
   }
   .info-field{
-    font-size: 1vw;
+    font-size: 14px;
   }
   button{
     @include main-button();
@@ -54,11 +53,11 @@
   table-layout: fixed;
 
   th {
-    background-color: #f2f2f2;
+    background-color: $table-row-color;
   }
 
   tr:hover{
-    background-color: #f5f5f5;
+    background-color: $table-row-hover-color;
   }
 
   .action-column{
@@ -68,7 +67,7 @@
   th, td {
     text-align: left;
     padding: 8px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $border-color;
   }
 
   button{
@@ -192,11 +191,6 @@ main{
 
   .medicine-entity {
     @include grid-entity;
-    
-    button {
-      @include main-button();
-    }
-
   }
 }
 
@@ -213,16 +207,10 @@ main{
     
     .order-date {
       font-size: 16px;
-      color: #666;
     }
 
     .order-status {
       font-size: 16px;
-      color: #666;
-    }
-    
-    button {
-      @include main-button();
     }
   }
 }
@@ -277,31 +265,20 @@ main{
       input,
       select {
         padding: 10px;
-        border: 1px solid #ccc;
+        border: 1px solid $border-color;
         border-radius: 5px;
         font-size: 16px;
         width: 94%;
         
         &:focus {
           outline: none;
-          border-color: #0077ff;
+          border-color: $main-button-color;
         }
       }
     }
     
     button {
-      background-color: #0077ff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 20px;
-      
-      &:hover {
-        background-color: #005ae6;
-      }
+      @include main-button();
     }
   }
 }
@@ -313,7 +290,7 @@ main{
   .dialog-top{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    background-color: #0D47A1;
+    background-color: $main-button-hover-color;
     height: 40px;
   }
   .medicine-info-name{
@@ -328,7 +305,7 @@ main{
       margin: 20px;
       tr {
         &:hover {
-          background-color: #f2f2f2;
+          background-color: $table-row-color;
         }
 
         td {
@@ -350,7 +327,7 @@ main{
   .medicine-entity,
   .order-entity {
     flex-basis: 100%; 
-    max-width: 100%; 
+    max-width: 80%; 
   }
   .users-table,
   .orders-table {
@@ -374,13 +351,16 @@ main{
 @media (min-width: 768px) and (max-width: 991px) {
   .medicine-entity,
   .order-entity {
-    flex-basis: calc((100% - 3rem) / 2); /* Two entities per row */
+    flex-basis: calc((100% - 3rem) / 2);
+    max-width: 40%; /* Two entities per row */
   }
 }
 
 @media (min-width: 992px) {
   .medicine-entity,
   .order-entity {
-    flex-basis: calc((100% - 4rem) / 3); /* Three entities per row */
+    flex-basis: calc((100% - 4rem) / 3);
+    max-width: 25%; /* Three entities per row */
   }
 }
+
