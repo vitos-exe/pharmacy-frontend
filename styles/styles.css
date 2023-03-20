@@ -136,7 +136,7 @@ main {
   border-radius: 5px;
   padding: 5px;
   margin-bottom: 10px;
-  width: 40%;
+  width: 60%;
 }
 .search-bar input[type=text] {
   border: none;
@@ -517,8 +517,8 @@ main {
     flex-wrap: wrap;
     justify-content: space-around;
   }
-  .medicine-operations .search-bar {
-    width: 100%;
+  .search-bar input {
+    width: 60%;
   }
 }
 @media (max-width: 767px) {
