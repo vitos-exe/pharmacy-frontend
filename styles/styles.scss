@@ -1,0 +1,386 @@
+@import 'colors';
+
+// Mixins
+@mixin layot-element{
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 1em;
+  padding: 1em;
+}
+
+@mixin main-button{
+  margin: 1rem;
+  padding: 0.5rem 0.5rem;
+  font-size: 1.5vw;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 0.25rem;    
+  border: none;
+  &:hover {
+    background-color: #0D47A1;
+  }
+}
+
+@mixin entities-grid{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+@mixin grid-entity{
+  flex: 1 0 20%;
+  max-width: 20%; 
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+  border-radius: 10px;
+  .main-info-field{
+    font-size: 2vw;
+  }
+  .info-field{
+    font-size: 1vw;
+  }
+  button{
+    @include main-button();
+  }
+}
+
+@mixin entities-table{
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover{
+    background-color: #f5f5f5;
+  }
+
+  .action-column{
+    display: block;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  button{
+    @include main-button;
+    
+  }
+}
+
+@mixin dialog{
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  width: 45%;
+  min-width: 250px;
+  text-align: center;
+}
+
+header {
+  @include layot-element;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+
+  .logo {
+    font-size: 3rem;
+    font-weight: bold;
+    color: $primary-color;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: space-around;
+    padding-inline-start: 0;
+    min-width: 40%;
+    list-style-type: none;
+    li {
+      margin: 5px;
+      font-size: 1.5em;
+      a {
+        color: $primary-color;
+        text-decoration: none;
+        font-weight: bold;
+
+        &:hover {
+          color: $light-yellow;
+        }
+      }
+    }
+  }
+
+  .cart-div {
+    position: relative; 
+    display: inline-block;
+
+    .cart-img{
+      height: 3em;
+    }
+
+    .cart-dropdown {
+      position: absolute;
+      right: 0;
+      top: 2em;
+      list-style-type: none;
+      display: none; /* hide by default */
+      background-color: $light-yellow;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      min-width: 150px;
+      li {
+        margin-bottom: 0.5rem;
+      }
+
+      button {
+        border: none;
+        padding: 0.5rem 1rem;
+        background-color: $primary-color;
+        color: white;
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+          background-color: red;
+        }
+        width: 100%;
+      }
+    }
+    
+    &:hover .cart-dropdown {
+      display: block; /* show on hover */
+    }
+  }
+  
+}
+
+main{
+  @include layot-element;
+}
+
+.medicine-buttons{
+  display: flex;
+  justify-content: flex-start;
+  button{
+    @include main-button;
+    margin: 10px;
+  }
+}
+
+.medicine-grid {
+  @include entities-grid;
+
+  .medicine-entity {
+    @include grid-entity;
+    
+    button {
+      @include main-button();
+    }
+
+  }
+}
+
+.orders-grid {
+  @include entities-grid;
+
+  .order-entity {
+    @include grid-entity;
+    
+    .order-name {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    
+    .order-date {
+      font-size: 16px;
+      color: #666;
+    }
+
+    .order-status {
+      font-size: 16px;
+      color: #666;
+    }
+    
+    button {
+      @include main-button();
+    }
+  }
+}
+
+.users-table {
+  @include entities-table;
+}
+
+.orders-table {
+  @include entities-table;
+}
+
+.login-dialog,
+.user-create-dialog,
+.user-edit-dialog,
+.medicine-create-dialog,
+.medicine-edit-dialog {
+  @include dialog;
+  padding: 20px;
+  
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    
+    h2 {
+      margin: 0;
+    }
+    
+    .dialog-close {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+  
+  &-form {
+    display: flex;
+    flex-direction: column;
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      
+      label {
+        margin-bottom: 5px;
+      }
+
+      input,
+      select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        width: 94%;
+        
+        &:focus {
+          outline: none;
+          border-color: #0077ff;
+        }
+      }
+    }
+    
+    button {
+      background-color: #0077ff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      
+      &:hover {
+        background-color: #005ae6;
+      }
+    }
+  }
+}
+
+.order-details-dialog,
+.demand-list-dialog,
+.medicine-info-dialog{
+  @include dialog;
+  .dialog-top{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #0D47A1;
+    height: 40px;
+  }
+  .medicine-info-name{
+    text-align: center;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+
+    tbody {
+      margin: 20px;
+      tr {
+        &:hover {
+          background-color: #f2f2f2;
+        }
+
+        td {
+          text-align: center;
+          width: 50%;
+          padding: 10px;
+        }
+      }
+    }
+  }
+  .close-button{
+    @include main-button;
+    width: 35%;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .medicine-entity,
+  .order-entity {
+    flex-basis: 100%; 
+    max-width: 100%; 
+  }
+  .users-table,
+  .orders-table {
+    th,
+    td {
+      display: block;
+      width: 93%;
+    }
+
+    .action-column {
+      flex-direction: column;
+      
+      button{
+        display: inline-block;
+        text-align: center;
+      };
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .medicine-entity,
+  .order-entity {
+    flex-basis: calc((100% - 3rem) / 2); /* Two entities per row */
+  }
+}
+
+@media (min-width: 992px) {
+  .medicine-entity,
+  .order-entity {
+    flex-basis: calc((100% - 4rem) / 3); /* Three entities per row */
+  }
+}
