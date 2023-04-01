@@ -1,23 +1,23 @@
 export default class {
-    constructor() {
+    constructor(title) {
+        document.title = title;
+    }
+
+    static async createNavbar(){
         var navbarUrls = {
             "unauthorized": "../../layout/unauthorized_navbar.html",
             "user": "../../layout/user_navbar.html",
             "admin": "../../layout/admin_navbar.html"
-        }
+        };
 
-        fetch(navbarUrls[sessionStorage.getItem("userRole")] || navbarUrls.unauthorized)
+        return await fetch(navbarUrls[sessionStorage.getItem("userRole")] || navbarUrls.unauthorized)
             .then(r => r.text())
             .then(html => {
-                document.querySelector("header").innerHTML = html
+                document.querySelector("header").innerHTML = html;
             })
     }
 
-    setTitle(title) {
-        document.title = title;
-    }
-
-    async getHtml() {
-        return "";
+    createHTML() {
+        
     }
 }
