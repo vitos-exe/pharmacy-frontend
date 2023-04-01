@@ -1,0 +1,39 @@
+<nav class="navbar">
+    <a href="./admin-medicine.html" class="logo">Pharmacy Service</a>
+    <ul class="nav-links">
+      <li><a href="/users">Users</a></li>
+      <li><a href="/admin">Orders</a></li>
+      <li><a>Edit account</a></li>
+      <div class="user-edit-dialog">
+        <div class="user-edit-dialog-header">
+          <h2>Edit User</h2>
+          <button class="dialog-close" onclick="closeDialog('.user-edit-dialog')">&times;</button>
+        </div>
+        <form class="user-edit-dialog-form">
+          <div class="form-group">
+            <label for="user-name">Username</label>
+            <input type="text" id="user-name" name="user-name">
+          </div>
+          <div class="form-group">
+            <label for="user-email">Email</label>
+            <input type="email" id="user-email" name="user-email">
+          </div>
+          <div class="form-group">
+            <label for="user-address">Address</label>
+            <input type="text" id="user-address" name="user-address">
+          </div>
+          <div class="form-group">
+            <label for="user-password">Password</label>
+            <input type="password" id="user-password" name="user-password">
+          </div>
+          <div class="form-group">
+            <label for="user-password-confirm">Confirm password</label>
+            <input type="password" id="user-password-confirm" name="user-password-confirm">
+          </div>
+          <button class="btn-delete">Delete</button>
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+      </div>        
+      <li><a href="/">Logout</a></li>
+    </ul>
+  </nav>

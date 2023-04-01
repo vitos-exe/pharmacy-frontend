@@ -1,3 +1,7 @@
+import MedicineView from "./views/MedicineView.js";
+import OrdersView from "./views/OrdersView.js";
+import UsersView from "./views/UsersView.js";
+
 const navigateTo = url => {
     history.pushState(null, null, url);
     router();
@@ -5,19 +9,20 @@ const navigateTo = url => {
 
 const router = async () => {
     const routes = [
-        { path: "/", view: () => console.log("/") },
-        { path: "/log-in", view: () => console.log("/log-in") },
-        { path: "/sing-up", view: () => console.log("/sing-up") }
+        { path: "/", view: MedicineView },
+        { path: "/medicine", view: MedicineView },
+        { path: "/orders", view: OrdersView },
+        { path: "/users", view: UsersView }
     ];
 
     let match = routes.find(route => location.pathname === route.path)
 
     if (!match) {
-        // 404 here
-        match = routes[0]
+        match = { view: NotFoundView }
     }
 
-    match.view();
+    new match.view();
+
     // const view = new match.route.view(getParams(match));
 
     // document.querySelector("#app").innerHTML = await view.getHtml();

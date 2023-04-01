@@ -5,6 +5,9 @@ const app = express();
 
 app.use("/script", express.static(path.resolve("script")))
 app.use("/styles", express.static(path.resolve("styles")))
+app.use("/layout", express.static(path.resolve("layout")))
+app.use("/pictures", express.static(path.resolve("pictures")))
+
 
 
 app.get("/*", (req, res) => {
