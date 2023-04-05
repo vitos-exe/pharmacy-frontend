@@ -14,4 +14,4 @@ app.get("/*", (req, res) => {
     res.sendFile(path.resolve("index.html"));
 });
 
-app.listen(process.env.PORT || 8080, () => console.log("Server running..."))
+app.listen(process.env.PORT || 8060, () => console.log("Server running..."))

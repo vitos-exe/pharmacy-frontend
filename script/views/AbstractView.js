@@ -1,9 +1,16 @@
 export default class {
     constructor(title) {
         document.title = title;
+        document.body.append(document.createElement("header"))
+        document.body.append(document.createElement("main"))
     }
 
-    static async createNavbar(){
+    async render(){
+        await this.createNavbar();
+        await this.renderMain();
+    }
+
+    async createNavbar(){
         var navbarUrls = {
             "unauthorized": "../../layout/unauthorized_navbar.html",
             "user": "../../layout/user_navbar.html",
@@ -17,7 +24,7 @@ export default class {
             })
     }
 
-    createHTML() {
+    async createMain() {
         
     }
 }
