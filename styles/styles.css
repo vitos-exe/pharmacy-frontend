@@ -51,6 +51,7 @@
   padding-bottom: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  min-width: 200px;
 }
 .navbar .cart-div .order-form .dialog-top {
   border-top-left-radius: 10px;
@@ -58,6 +59,7 @@
   background-color: #007bff;
   height: 25px;
   width: 100%;
+  margin-bottom: 20px;
 }
 .navbar .cart-div .order-form .medicine-row {
   display: flex;
@@ -89,6 +91,7 @@
   border-radius: 0.25rem;
   font-size: 1rem;
   cursor: pointer;
+  margin-top: 20px;
 }
 .navbar .cart-div .order-form button[type=submit]:hover {
   background-color: darkblue;
@@ -319,7 +322,7 @@ main {
 .user-edit-dialog,
 .medicine-create-dialog,
 .medicine-edit-dialog {
-  display: none;
+  display: block;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -437,7 +440,7 @@ main {
 .order-details-dialog,
 .demand-list-dialog,
 .medicine-info-dialog {
-  display: none;
+  display: block;
   position: fixed;
   top: 50%;
   left: 50%;
