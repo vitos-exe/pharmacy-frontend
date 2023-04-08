@@ -17,11 +17,12 @@ export default class {
         logo.href = '/';
         logo.setAttribute('data-link', '');
 
-        const nav_links = createElementAndDoStuff('ul', 'nav-links');
-        nav_links.append(...userRole === undefined
-            ? this.getUnauthorizedLinks() : this.getAuthorizedLinks());
+        const navLinks = createElementAndDoStuff('ul', 'nav-links');
+        navLinks.append(
+            ...(userRole === undefined ? this.getUnauthorizedLinks() : this.getAuthorizedLinks()),
+        );
 
-        navbar.append(logo, nav_links);
+        navbar.append(logo, navLinks);
 
         if (userRole === 'user') {
             navbar.appendChild(this.getCart());
@@ -32,54 +33,54 @@ export default class {
 
     getUnauthorizedLinks() {
         const login = createElementAndDoStuff('li', 'login-element');
-        const login_link = createElementAndDoStuff('a', null, 'Log in');
-        login_link.addEventListener('click', (e) => {
+        const loginLink = createElementAndDoStuff('a', null, 'Log in');
+        loginLink.addEventListener('click', () => {
             if (document.querySelector('.login-dialog') === null) {
                 this.openLoginDialog();
             }
         });
-        login.appendChild(login_link);
+        login.appendChild(loginLink);
 
         const signup = createElementAndDoStuff('li', 'signup-element');
-        const signup_link = createElementAndDoStuff('a', null, 'Sign up');
-        signup_link.addEventListener('click', (e) => {
+        const signupLink = createElementAndDoStuff('a', null, 'Sign up');
+        signupLink.addEventListener('click', () => {
             if (document.querySelector('.user-create-dialog') === null) {
                 this.openSignupDialog();
             }
         });
-        signup.appendChild(signup_link);
+        signup.appendChild(signupLink);
 
         return Array.of(login, signup);
     }
 
     getAuthorizedLinks() {
-        const links = new Array();
+        const links = [];
         if (sessionStorage.userRole === 'admin') {
             const users = createElementAndDoStuff('li');
-            const users_links = createElementAndDoStuff('a', null, 'Users');
-            users_links.href = '/users';
-            users_links.setAttribute('data-link', '');
-            users.appendChild(users_links);
+            const usersLinks = createElementAndDoStuff('a', null, 'Users');
+            usersLinks.href = '/users';
+            usersLinks.setAttribute('data-link', '');
+            users.appendChild(usersLinks);
             links.push(users);
         }
 
         const orders = createElementAndDoStuff('li');
-        const orders_link = createElementAndDoStuff('a', null, 'Orders');
-        orders_link.href = '/orders';
-        orders_link.setAttribute('data-link', '');
-        orders.appendChild(orders_link);
+        const ordersLink = createElementAndDoStuff('a', null, 'Orders');
+        ordersLink.href = '/orders';
+        ordersLink.setAttribute('data-link', '');
+        orders.appendChild(ordersLink);
 
-        const edit = createElementAndDoStuff('li');
-        const edit_link = createElementAndDoStuff('a', null, 'Edit account');
-        edit_link.addEventListener('click', (e) => this.openEditAccountModal());
-        edit.appendChild(edit_link);
+        const edit = createElementAndDoStuff('li', 'edit-element');
+        const editLink = createElementAndDoStuff('a', null, 'Edit account');
+        editLink.addEventListener('click', () => this.openEditAccountModal());
+        edit.appendChild(editLink);
 
         const logout = createElementAndDoStuff('li');
-        const logout_link = createElementAndDoStuff('a', 'logout-button', 'Log out');
-        logout_link.href = '/';
-        logout_link.setAttribute('data-link', '');
-        logout_link.addEventListener('click', (e) => sessionStorage.removeItem('userRole'));
-        logout.appendChild(logout_link);
+        const logoutLink = createElementAndDoStuff('a', 'logout-button', 'Log out');
+        logoutLink.href = '/';
+        logoutLink.setAttribute('data-link', '');
+        logoutLink.addEventListener('click', () => sessionStorage.removeItem('userRole'));
+        logout.appendChild(logoutLink);
 
         links.push(orders, edit, logout);
 
@@ -89,81 +90,87 @@ export default class {
     getCart() {
         const cart = createElementAndDoStuff('div', 'cart-div');
 
-        const cart_img = createElementAndDoStuff('img', 'cart-img');
-        cart_img.src = '../../pictures/cart.png';
-        cart_img.alt = 'Cart';
+        const cartImg = createElementAndDoStuff('img', 'cart-img');
+        cartImg.src = '../../pictures/cart.png';
+        cartImg.alt = 'Cart';
 
-        const order_form = createElementAndDoStuff('form', 'order-form');
-        const submit_button = createElementAndDoStuff('button', 'form-submit-btn', 'Submit order');
-        submit_button.type = 'submit';
-        order_form.append(
+        const orderForm = createElementAndDoStuff('form', 'order-form');
+        const submitButton = createElementAndDoStuff('button', 'form-submit-btn', 'Submit order');
+        submitButton.type = 'submit';
+        orderForm.append(
             createElementAndDoStuff('div', 'dialog-top'),
-            submit_button,
+            submitButton,
         );
 
-        cart.append(cart_img, order_form);
+        cart.append(cartImg, orderForm);
 
         return cart;
     }
 
     openLoginDialog() {
-        const login_dialog = createElementAndDoStuff('div', 'login-dialog');
+        const loginDialog = createElementAndDoStuff('div', 'login-dialog');
 
-        const login_header = createElementAndDoStuff('div', 'login-dialog-header');
+        const loginHeader = createElementAndDoStuff('div', 'login-dialog-header');
         const closeButton = createElementAndDoStuff('button', 'dialog-close', 'x');
-        closeButton.addEventListener('click', (e) => document.querySelector('.nav-links').removeChild(login_dialog));
-        login_header.append(
+        closeButton.addEventListener('click', () => document.querySelector('.nav-links').removeChild(loginDialog));
+        loginHeader.append(
             createElementAndDoStuff('h2', null, 'Log in'),
             closeButton,
         );
 
-        const login_form = createElementAndDoStuff('form', 'login-dialog-form');
+        const loginForm = createElementAndDoStuff('form', 'login-dialog-form');
 
-        const submit_button = createElementAndDoStuff('button', 'submit-btn', 'Submit');
-        submit_button.type = 'submit';
+        const submitButton = createElementAndDoStuff('button', 'submit-btn', 'Submit');
+        submitButton.type = 'submit';
+        submitButton.href = '\\';
 
-        login_form.append(
+        loginForm.append(
             ...['email', 'password'].map((field) => this.getFormGroup(field)),
-            submit_button,
+            submitButton,
         );
 
-        login_form.addEventListener('submit', (e) => {
+        loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             this.doLogin(e.target);
         });
 
-        login_dialog.append(login_header, login_form);
+        loginDialog.append(loginHeader, loginForm);
 
-        document.querySelector('.login-element').insertAdjacentElement('afterend', login_dialog);
+        document.querySelector('.login-element').insertAdjacentElement('afterend', loginDialog);
     }
 
     openSignupDialog() {
-        const signup_dialog = createElementAndDoStuff('div', 'user-create-dialog');
+        const signupDialog = createElementAndDoStuff('div', 'user-create-dialog');
 
-        const signup_header = createElementAndDoStuff('div', 'user-create-dialog-header');
+        const signupHeader = createElementAndDoStuff('div', 'user-create-dialog-header');
         const closeButton = createElementAndDoStuff('button', 'dialog-close', 'x');
-        closeButton.addEventListener('click', (e) => document.querySelector('.nav-links').removeChild(signup_dialog));
-        signup_header.append(
+        closeButton.addEventListener('click', () => document.querySelector('.nav-links').removeChild(signupDialog));
+        signupHeader.append(
             createElementAndDoStuff('h2', null, 'Sign up'),
             closeButton,
         );
 
-        const signup_form = createElementAndDoStuff('form', 'user-create-dialog-form');
+        const signupForm = createElementAndDoStuff('form', 'user-create-dialog-form');
 
-        const submit_button = createElementAndDoStuff('button', 'submit-btn', 'Submit');
-        submit_button.type = 'submit';
+        const submitButton = createElementAndDoStuff('button', 'submit-btn', 'Submit');
+        submitButton.type = 'submit';
 
-        signup_form.append(
+        signupForm.append(
             ...['name', 'email', 'address', 'password', 'password-confirm'].map((field) => this.getFormGroup(field)),
-            submit_button,
+            submitButton,
         );
 
-        signup_dialog.append(signup_header, signup_form);
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.doSignup(signupForm);
+        });
 
-        document.querySelector('.signup-element').insertAdjacentElement('afterend', signup_dialog);
+        signupDialog.append(signupHeader, signupForm);
+
+        document.querySelector('.signup-element').insertAdjacentElement('afterend', signupDialog);
     }
 
-    getFormGroup(field) {
+    getFormGroup(field, required = true) {
         const group = createElementAndDoStuff('div', 'form-group');
         let name; let
             type;
@@ -175,21 +182,208 @@ export default class {
             type = ['password', 'email'].includes(field) ? field : 'text';
         }
         const label = createElementAndDoStuff('label', null, name);
-        label.for = `user-${field}`;
+        label.setAttribute('for', `user-${field}`);
 
         const input = createElementAndDoStuff('input');
 
         input.type = type;
         input.id = `user-${field}`;
         input.name = `user-${field}`;
-        input.required = true;
+        input.required = required;
 
         group.append(label, input);
 
         return group;
     }
 
-    doLogin(form) {
-        console.log(form);
+    async doLogin(form) {
+        const formValues = {};
+
+        const formGroups = form.getElementsByClassName('form-group');
+        for (let i = 0; i < formGroups.length; i += 1) {
+            const formGroup = formGroups[i];
+
+            const label = formGroup.querySelector('label');
+            const input = formGroup.querySelector('input');
+
+            if (label && input) {
+                const key = label.getAttribute('for');
+                const { value } = input;
+                formValues[key] = value;
+            }
+        }
+
+        const encodedAuth = btoa(`${formValues['user-email']}:${formValues['user-password']}`);
+
+        const response = await fetch('http://localhost:8080/user/me', {
+            headers: {
+                Authorization: `Basic ${encodedAuth}`,
+            },
+        });
+
+        if (response.status === 401) {
+            alert('Invalid email or password');
+        } else {
+            const user = await response.json();
+            sessionStorage.userRole = user.role;
+            sessionStorage.userId = user.id;
+            sessionStorage.userEmail = user.email;
+            sessionStorage.userPassword = formValues['user-password'];
+
+            const submitButton = document.querySelector('.submit-btn');
+            submitButton.setAttribute('data-link', '');
+            submitButton.click();
+        }
+    }
+
+    async doSignup(form) {
+        const formValues = {};
+
+        const formGroups = form.getElementsByClassName('form-group');
+        for (let i = 0; i < formGroups.length; i += 1) {
+            const formGroup = formGroups[i];
+
+            const label = formGroup.querySelector('label');
+            const input = formGroup.querySelector('input');
+
+            if (label && input) {
+                const key = label.getAttribute('for').slice(5);
+                const { value } = input;
+                formValues[key] = value;
+            }
+        }
+        if (formValues.password !== formValues['password-confirm']) {
+            alert("Passwords don't match");
+            return;
+        }
+
+        delete formValues['password-confirm'];
+
+        const response = await fetch('http://localhost:8080/user/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formValues),
+        });
+
+        if (response.status !== 201) {
+            alert(await response.text());
+        } else {
+            alert('User was created');
+            document.querySelector('.nav-links').removeChild(document.querySelector('.user-create-dialog'));
+        }
+    }
+
+    openEditAccountModal() {
+        const editAccountDialog = createElementAndDoStuff('div', 'user-edit-dialog');
+
+        const editHeader = createElementAndDoStuff('div', 'user-edit-dialog-header');
+        const closeButton = createElementAndDoStuff('button', 'dialog-close', 'x');
+        closeButton.addEventListener('click', () => document.querySelector('.nav-links').removeChild(editAccountDialog));
+        editHeader.append(
+            createElementAndDoStuff('h2', null, 'Edit account'),
+            closeButton,
+        );
+
+        const editForm = createElementAndDoStuff('form', 'user-edit-dialog-form');
+
+        const deleteButton = createElementAndDoStuff('button', 'btn-delete', 'Delete');
+        deleteButton.addEventListener('click', this.deleteUser);
+
+        const submitButton = createElementAndDoStuff('button', 'submit-btn', 'Submit');
+        submitButton.type = 'submit';
+
+        editForm.append(
+            ...['name', 'email', 'address', 'password', 'password-confirm'].map((field) => this.getFormGroup(field, false)),
+            deleteButton,
+            submitButton,
+        );
+
+        editForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.editAccount(editForm);
+        });
+
+        editAccountDialog.append(editHeader, editForm);
+
+        document.querySelector('.edit-element').insertAdjacentElement('afterend', editAccountDialog);
+    }
+
+    async deleteUser() {
+        const encodedAuth = btoa(`${sessionStorage.userEmail}:${sessionStorage.userPassword}`);
+
+        const response = await fetch(`http://localhost:8080/user/${sessionStorage.userId}`, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Basic ${encodedAuth}`,
+            },
+        });
+
+        if (response.status !== 200) {
+            alert(await response.text());
+        } else {
+            alert('Your account was deleted');
+            sessionStorage.removeItem('userId');
+            document.querySelector('.logout-button').click();
+        }
+    }
+
+    async editAccount(form) {
+        const formValues = {};
+
+        const formGroups = form.getElementsByClassName('form-group');
+
+        for (let i = 0; i < formGroups.length; i += 1) {
+            const formGroup = formGroups[i];
+
+            const label = formGroup.querySelector('label');
+            const input = formGroup.querySelector('input');
+
+            if (label && input && input.value !== '') {
+                const key = label.getAttribute('for').slice(5);
+                const { value } = input;
+                formValues[key] = value;
+            }
+        }
+
+        if (Object.keys(formValues).length === 0) {
+            alert("You didn't input anything!");
+            return;
+        }
+
+        if ((Object.prototype.hasOwnProperty.call(formValues, 'password')
+            || Object.prototype.hasOwnProperty.call(formValues, 'password-confirm'))
+                && (formValues.password !== formValues['password-confirm'])) {
+            alert("Password doens't match!");
+        }
+
+        if (Object.prototype.hasOwnProperty.call(formValues, 'password-confirm')) {
+            delete formValues['password-confirm'];
+        }
+
+        const encodedAuth = btoa(`${sessionStorage.userEmail}:${sessionStorage.userPassword}`);
+
+        const response = await fetch(`http://localhost:8080/user/${sessionStorage.userId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Basic ${encodedAuth}`,
+            },
+            body: JSON.stringify(formValues),
+        });
+
+        if (response.status !== 200) {
+            alert(await response.text());
+        } else {
+            alert('Account was changed');
+            document.querySelector('.nav-links').removeChild(document.querySelector('.user-edit-dialog'));
+            if (Object.prototype.hasOwnProperty.call(formValues, 'password')) {
+                sessionStorage.userPassword = formValues.password;
+            }
+            if (Object.prototype.hasOwnProperty.call(formValues, 'email')) {
+                sessionStorage.userEmail = formValues.email;
+            }
+        }
     }
 }
