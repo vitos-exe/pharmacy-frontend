@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Service</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="./admin-medicine.html" class="logo">Pharmacy Service</a>
+        <ul class="nav-links">
+          <li><a href="./admin-users.html">Users</a></li>
+          <li><a href="./admin-orders.html">Orders</a></li>
+          <li><a href="../index.html">Logout</a></li>
+          
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="users">
+        <div class="search-bar">
+          <input type="text" placeholder="Search">
+          <button>Go</button>
+        </div> 
+        <table class="users-table">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Address</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>John</td>
+                <td>Admin</td>
+                <td>Here</td>
+                <td class="action-column">
+                  <button class="change-role-btn">Change Role</button>
+                  <button class="delete-user-btn">Delete User</button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Jane</td>
+                <td>User</td>
+                <td>Here</td>
+                <td class="action-column">
+                  <button class="change-role-btn">Change Role</button>
+                  <button class="delete-user-btn">Delete User</button>
+                </td>
+              </tr>
+              <!-- add more rows as needed -->
+            </tbody>
+          </table>          
+      </section>
+    </main>
+
+    <footer>
+    </footer>
+    <script src="../app.js"></script>
+  </body>
+</html>
