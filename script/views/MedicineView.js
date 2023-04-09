@@ -145,7 +145,7 @@ export default class extends AbstractView {
             const tableRow = createElementAndDoStuff("tr");
             tableRow.append(
                 createElementAndDoStuff("td", null, element.name),
-                createElementAndDoStuff("td", null, element.quantity)
+                createElementAndDoStuff("td", null, element.quantity + " units")
             );
             tableBody.appendChild(tableRow);
         });
