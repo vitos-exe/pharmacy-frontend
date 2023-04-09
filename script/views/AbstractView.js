@@ -1,4 +1,4 @@
-import { createElementAndDoStuff } from '../Utils.js';
+import { createElementAndDoStuff, getFormGroup } from '../Utils.js';
 
 export default class {
     constructor(title) {
@@ -102,6 +102,11 @@ export default class {
             submitButton,
         );
 
+        orderForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.createOrder();
+        });
+
         cart.append(cartImg, orderForm);
 
         return cart;
@@ -125,7 +130,7 @@ export default class {
         submitButton.href = '\\';
 
         loginForm.append(
-            ...['email', 'password'].map((field) => this.getFormGroup(field)),
+            ...['email', 'password'].map((field) => getFormGroup(field)),
             submitButton,
         );
 
@@ -156,7 +161,7 @@ export default class {
         submitButton.type = 'submit';
 
         signupForm.append(
-            ...['name', 'email', 'address', 'password', 'password-confirm'].map((field) => this.getFormGroup(field)),
+            ...['name', 'email', 'address', 'password', 'password-confirm'].map((field) => getFormGroup(field)),
             submitButton,
         );
 
@@ -170,33 +175,7 @@ export default class {
         document.querySelector('.signup-element').insertAdjacentElement('afterend', signupDialog);
     }
 
-    getFormGroup(field, required = true) {
-        const group = createElementAndDoStuff('div', 'form-group');
-        let name; let
-            type;
-        if (field === 'password-confirm') {
-            name = 'Confirm password';
-            type = 'password';
-        } else {
-            name = field[0].toUpperCase() + field.slice(1);
-            type = ['password', 'email'].includes(field) ? field : 'text';
-        }
-        const label = createElementAndDoStuff('label', null, name);
-        label.setAttribute('for', `user-${field}`);
-
-        const input = createElementAndDoStuff('input');
-
-        input.type = type;
-        input.id = `user-${field}`;
-        input.name = `user-${field}`;
-        input.required = required;
-
-        group.append(label, input);
-
-        return group;
-    }
-
-    async doLogin(form) {
+    static async doLogin(form) {
         const formValues = {};
 
         const formGroups = form.getElementsByClassName('form-group');
@@ -236,7 +215,7 @@ export default class {
         }
     }
 
-    async doSignup(form) {
+    static async doSignup(form) {
         const formValues = {};
 
         const formGroups = form.getElementsByClassName('form-group');
@@ -295,7 +274,7 @@ export default class {
         submitButton.type = 'submit';
 
         editForm.append(
-            ...['name', 'email', 'address', 'password', 'password-confirm'].map((field) => this.getFormGroup(field, false)),
+            ...['name', 'email', 'address', 'password', 'password-confirm'].map((field) => getFormGroup(field, false)),
             deleteButton,
             submitButton,
         );
@@ -310,7 +289,7 @@ export default class {
         document.querySelector('.edit-element').insertAdjacentElement('afterend', editAccountDialog);
     }
 
-    async deleteUser() {
+    static async deleteUser() {
         const encodedAuth = btoa(`${sessionStorage.userEmail}:${sessionStorage.userPassword}`);
 
         const response = await fetch(`http://localhost:8080/user/${sessionStorage.userId}`, {
@@ -329,7 +308,7 @@ export default class {
         }
     }
 
-    async editAccount(form) {
+    static async editAccount(form) {
         const formValues = {};
 
         const formGroups = form.getElementsByClassName('form-group');
@@ -384,6 +363,34 @@ export default class {
             if (Object.prototype.hasOwnProperty.call(formValues, 'email')) {
                 sessionStorage.userEmail = formValues.email;
             }
+        }
+    }
+
+    static async createOrder() {
+        const form = document.querySelector('.order-form');
+
+        const items = Array.from(form.getElementsByClassName('medicine-row')).map((row) => ({
+            name: row.querySelector('label').for,
+            quantity: row.querySelector('input').value,
+        }));
+
+        const encodedAuth = btoa(`${sessionStorage.userEmail}:${sessionStorage.userPassword}`);
+
+        const response = await fetch('http://localhost:8080/order/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Basic ${encodedAuth}`,
+            },
+            body: JSON.stringify({
+                order_items: items,
+            }),
+        });
+
+        if (response.status === 200) {
+            alert('Order was created');
+        } else {
+            alert(await response.text());
         }
     }
 }

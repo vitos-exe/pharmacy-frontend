@@ -18,53 +18,42 @@ export default class extends AbstractView {
     addMedicineOperations(medicineList) {
         const medicineOperations = createElementAndDoStuff('div', 'medicine-operations');
 
-        const searchBar = createElementAndDoStuff('div', 'search-bar');
-
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.placeholder = 'Search';
-
-        const button = createElementAndDoStuff('button', null, 'Go');
-
-        searchBar.append(input, button);
-
-        if (sessionStorage.userRole === 'admin'){
+        if (sessionStorage.userRole === 'admin') {
             this.addMedicineAdminButtons(medicineOperations);
         }
-
-        medicineOperations.appendChild(searchBar);
 
         medicineList.appendChild(medicineOperations);
     }
 
-    addMedicineAdminButtons(operationsDiv){
-        const addMedicineButton = createElementAndDoStuff("button", "add-medicine-botton", "Add medicine");
-        addMedicineButton.addEventListener("click", () => {
-            if (document.querySelector(".medicine-create-dialog")  === null){
+    addMedicineAdminButtons(operationsDiv) {
+        const addMedicineButton = createElementAndDoStuff('button', 'add-medicine-botton', 'Add medicine');
+        addMedicineButton.addEventListener('click', () => {
+            if (document.querySelector('.medicine-create-dialog') === null) {
                 this.openAddMedicineDialog();
             }
         });
 
-        const showDemandButton = createElementAndDoStuff("button", "demand-list-botton", "Demand list");
-        showDemandButton.addEventListener("click", () => {
-            if (document.querySelector(".demand-list-dialog")  === null){
+        const showDemandButton = createElementAndDoStuff('button', 'demand-list-botton', 'Demand list');
+        showDemandButton.addEventListener('click', () => {
+            if (document.querySelector('.demand-list-dialog') === null) {
                 this.showDemandDialog();
             }
         });
 
-        const medicineAdminButtons = createElementAndDoStuff("div", "medicine-buttons");
+        const medicineAdminButtons = createElementAndDoStuff('div', 'medicine-buttons');
         medicineAdminButtons.append(addMedicineButton, showDemandButton);
 
         operationsDiv.append(medicineAdminButtons);
     }
 
-    openAddMedicineDialog(){
+    openAddMedicineDialog() {
         const medicineCreateDialog = createElementAndDoStuff('div', 'medicine-create-dialog');
 
         const medicineCreateHeader = createElementAndDoStuff('div', 'medicine-create-dialog-header');
         const closeButton = createElementAndDoStuff('button', 'dialog-close', 'x');
-        closeButton.addEventListener('click', 
-            () => document.querySelector('.medicine-buttons').removeChild(medicineCreateDialog)
+        closeButton.addEventListener(
+            'click',
+            () => document.querySelector('.medicine-buttons').removeChild(medicineCreateDialog),
         );
         medicineCreateHeader.append(
             createElementAndDoStuff('h2', null, 'Add new medicine'),
@@ -91,7 +80,7 @@ export default class extends AbstractView {
         document.querySelector('.add-medicine-botton').insertAdjacentElement('afterend', medicineCreateDialog);
     }
 
-    async createMedicine(form){
+    async createMedicine(form) {
         const formValues = {};
 
         const formGroups = form.getElementsByClassName('form-group');
@@ -112,7 +101,7 @@ export default class extends AbstractView {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Basic ${btoa(`${sessionStorage.userEmail}:${sessionStorage.userPassword}`)}`
+                Authorization: `Basic ${btoa(`${sessionStorage.userEmail}:${sessionStorage.userPassword}`)}`,
             },
             body: JSON.stringify(formValues),
         });
@@ -122,36 +111,36 @@ export default class extends AbstractView {
         } else {
             alert('Medicine was created');
             document.querySelector('.medicine-buttons').removeChild(document.querySelector('.medicine-create-dialog'));
-            document.querySelector(".medicine-grid").append(this.getMedicineGridEntity(await response.json()));
+            document.querySelector('.medicine-grid').append(this.getMedicineGridEntity(await response.json()));
         }
     }
 
-    async showDemandDialog(){
-        const demandListDialog = createElementAndDoStuff("div", "demand-list-dialog");
-        const closeButton = createElementAndDoStuff("button", "close-button", "Close");
-        closeButton.addEventListener("click", () => document.querySelector(".medicine-buttons").removeChild(demandListDialog));
+    static async showDemandDialog() {
+        const demandListDialog = createElementAndDoStuff('div', 'demand-list-dialog');
+        const closeButton = createElementAndDoStuff('button', 'close-button', 'Close');
+        closeButton.addEventListener('click', () => document.querySelector('.medicine-buttons').removeChild(demandListDialog));
 
-        const table = createElementAndDoStuff("table");
-        const tableBody = createElementAndDoStuff("tbody",  "demand-list-body");
+        const table = createElementAndDoStuff('table');
+        const tableBody = createElementAndDoStuff('tbody', 'demand-list-body');
         table.appendChild(tableBody);
 
-        const data = await fetch("http://localhost:8080/medicine/demand", {
+        const data = await fetch('http://localhost:8080/medicine/demand', {
             headers: {
-                Authorization: `Basic ${btoa(`${sessionStorage.userEmail}:${sessionStorage.userPassword}`)}`
-            }
-        }).then(r => r.json());
+                Authorization: `Basic ${btoa(`${sessionStorage.userEmail}:${sessionStorage.userPassword}`)}`,
+            },
+        }).then((r) => r.json());
 
-        data.forEach(element => {
-            const tableRow = createElementAndDoStuff("tr");
+        data.forEach((element) => {
+            const tableRow = createElementAndDoStuff('tr');
             tableRow.append(
-                createElementAndDoStuff("td", null, element.name),
-                createElementAndDoStuff("td", null, element.quantity + " units")
+                createElementAndDoStuff('td', null, element.name),
+                createElementAndDoStuff('td', null, `${element.quantity} units`),
             );
             tableBody.appendChild(tableRow);
         });
 
-        demandListDialog.append(createElementAndDoStuff("div", "dialog-top"), table, closeButton);
-        document.querySelector(".demand-list-botton").insertAdjacentElement("afterend", demandListDialog);
+        demandListDialog.append(createElementAndDoStuff('div', 'dialog-top'), table, closeButton);
+        document.querySelector('.demand-list-botton').insertAdjacentElement('afterend', demandListDialog);
     }
 
     async render() {
@@ -197,7 +186,7 @@ export default class extends AbstractView {
         return entity;
     }
 
-    openMedicineEditModal(id){
+    openMedicineEditModal(id) {
         const editMedicineDialog = createElementAndDoStuff('div', 'medicine-edit-dialog');
 
         const editHeader = createElementAndDoStuff('div', 'medicine-edit-dialog-header');
@@ -220,7 +209,7 @@ export default class extends AbstractView {
         submitButton.type = 'submit';
 
         editForm.append(
-            ...['name', 'price', 'quantity', 'description'].map((field) => this.getFormGroup(field, false)),
+            ...['name', 'price', 'quantity', 'description'].map((field) => getFormGroup(field, false)),
             deleteButton,
             submitButton,
         );
@@ -235,7 +224,7 @@ export default class extends AbstractView {
         document.querySelector('.medicine-grid').insertAdjacentElement('afterend', editMedicineDialog);
     }
 
-    async deleteMedicine(id){
+    static async deleteMedicine(id) {
         const encodedAuth = btoa(`${sessionStorage.userEmail}:${sessionStorage.userPassword}`);
 
         const response = await fetch(`http://localhost:8080/medicine/${id}`, {
@@ -249,12 +238,12 @@ export default class extends AbstractView {
             alert(await response.text());
         } else {
             alert('Medicine was deleted');
-            document.querySelector(".medicine-grid").removeChild(document.getElementById(id));
-            document.querySelector(".dialog-close").click();
+            document.querySelector('.medicine-grid').removeChild(document.getElementById(id));
+            document.querySelector('.dialog-close').click();
         }
     }
 
-    async editMedicine(id, form){
+    async editMedicine(id, form) {
         const formValues = {};
 
         const formGroups = form.getElementsByClassName('form-group');
@@ -292,18 +281,17 @@ export default class extends AbstractView {
             alert(await response.text());
         } else {
             alert('Medicine was changed');
-            document.querySelector(".dialog-close").click();
-            console.log(document.getElementById(id));
-            document.querySelector(".medicine-grid").replaceChild(
+            document.querySelector('.dialog-close').click();
+            document.querySelector('.medicine-grid').replaceChild(
                 await fetch(`http://localhost:8080/medicine/${id}`)
-                    .then(r => r.json())
-                    .then(json => this.getMedicineGridEntity(json)), 
-                document.getElementById(id)
-            )
+                    .then((r) => r.json())
+                    .then((json) => this.getMedicineGridEntity(json)),
+                document.getElementById(id),
+            );
         }
     }
 
-    async openMedicineMoreInfoModal(id) {
+    static async openMedicineMoreInfoModal(id) {
         const medicineInfo = await fetch(`http://localhost:8080/medicine/${id}`).then((r) => r.json());
 
         const dialog = createElementAndDoStuff('div', 'medicine-info-dialog');
@@ -318,13 +306,13 @@ export default class extends AbstractView {
 
         const closeButton = createElementAndDoStuff('button', 'close-button', 'Close');
         dialog.append(closeButton);
-        closeButton.addEventListener('click', (e) => document.querySelector('.medicine-list').removeChild(dialog));
+        closeButton.addEventListener('click', () => document.querySelector('.medicine-list').removeChild(dialog));
 
         document.querySelector('.medicine-list').append(dialog);
     }
 
-    addToCart(data) {
-        if (document.getElementById(data.id) !== null) {
+    static addToCart(data) {
+        if (document.getElementById(`${data.id}order`) !== null) {
             return;
         }
 
@@ -334,7 +322,7 @@ export default class extends AbstractView {
         label.for = data.name;
         const input = createElementAndDoStuff('input');
         input.type = 'number';
-        input.id = data.id;
+        input.id = `${data.id}order`;
         input.name = data.name;
         input.min = 0;
         input.value = 1;
