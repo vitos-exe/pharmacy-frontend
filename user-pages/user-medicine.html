@@ -69,64 +69,60 @@
     </header>
 
     <main>
-      <section class="medicine-list">
-        <div class="medicine-operations">
-          <div class="search-bar">
-            <input type="text" placeholder="Search">
-            <button>Go</button>
-          </div>     
-        </div> 
-        <div class="medicine-grid">
-          <div class="medicine-entity">
-            <div class="entity-info">
-              <div class="main-info-field">Medicine 1</div>
-              <div class="info-field">$10</div>
-            </div>
-            <div class="entity-buttons">
-              <button class="more-info-button">More info</button>
-              <button class="add-to-order-button">Add to order</button>
-            </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search">
+        <button>Go</button>
+      </div>    
+      <div class="entities-grid">
+        <div class="grid-entity">
+          <div class="entity-info">
+            <div class="main-info-field">Medicine 1</div>
+            <div class="info-field">$10</div>
           </div>
-          <div class="medicine-entity">
-            <div class="entity-info">
-              <div class="main-info-field">Medicine 2</div>
-              <div class="info-field">$20</div>
-            </div>
-            <div class="entity-buttons">
-              <button class="more-info-button">More info</button>
-              <button class="add-to-order-button">Add to order</button>
-            </div>
-          </div>
-          <div class="medicine-entity">
-            <div class="entity-info">
-              <div class="main-info-field">Medicine 3</div>
-              <div class="info-field">$30</div>
-            </div>
-            <div class="entity-buttons">
-              <button class="more-info-button">More info</button>
-              <button class="add-to-order-button">Add to order</button>
-            </div>
-          </div>
-          <div class="medicine-entity">
-            <div class="entity-info">
-              <div class="main-info-field">Medicine 4</div>
-              <div class="info-field">$40</div>
-            </div>
-            <div class="entity-buttons">
-              <button class="more-info-button">More info</button>
-              <button class="add-to-order-button">Add to order</button>
-            </div>
+          <div class="entity-buttons">
+            <button class="more-info-button">More info</button>
+            <button class="add-to-order-button">Add to order</button>
           </div>
         </div>
-        <div class="medicine-info-dialog">
-          <div class="dialog-top"></div>
-          <h2 class="main-info-name">Medicine Name</h2>
-          <p class="info-field">Price: $10.00</p>
-          <p class="info-field">Quantity: 20</p>
-          <p class="info-field">Description: This medicine helps with headaches and fever.</p>
-          <button class="close-button" onclick="closeDialog('.medicine-info-dialog');">Close</button>
+        <div class="grid-entity">
+          <div class="entity-info">
+            <div class="main-info-field">Medicine 2</div>
+            <div class="info-field">$20</div>
+          </div>
+          <div class="entity-buttons">
+            <button class="more-info-button">More info</button>
+            <button class="add-to-order-button">Add to order</button>
+          </div>
         </div>
-      </section>
+        <div class="grid-entity">
+          <div class="entity-info">
+            <div class="main-info-field">Medicine 3</div>
+            <div class="info-field">$30</div>
+          </div>
+          <div class="entity-buttons">
+            <button class="more-info-button">More info</button>
+            <button class="add-to-order-button">Add to order</button>
+          </div>
+        </div>
+        <div class="grid-entity">
+          <div class="entity-info">
+            <div class="main-info-field">Medicine 4</div>
+            <div class="info-field">$40</div>
+          </div>
+          <div class="entity-buttons">
+            <button class="more-info-button">More info</button>
+            <button class="add-to-order-button">Add to order</button>
+          </div>
+        </div>
+      </div>
+      <div class="medicine-info-dialog">
+        <div class="dialog-top"></div>
+        <h2 class="main-info-name">Medicine Name</h2>
+        <p class="info-field">Price: $10.00</p>
+        <p class="info-field">Quantity: 20</p>
+        <p class="info-field">Description: This medicine helps with headaches and fever.</p>
+        <button class="close-button" onclick="closeDialog('.medicine-info-dialog');">Close</button>
+      </div>
     </main>
 
     <footer>

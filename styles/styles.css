@@ -1,3 +1,80 @@
+.entities-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 10px auto;
+}
+.entities-grid .grid-entity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  flex-direction: row;
+}
+.entities-grid .grid-entity .entity-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.entities-grid .grid-entity .entity-info .main-info-field {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.entities-grid .grid-entity .entity-info .info-field {
+  font-size: 1.2em;
+}
+.entities-grid .grid-entity .entity-info {
+  flex-direction: column;
+}
+.entities-grid .grid-entity .entity-buttons button {
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+.entities-grid .grid-entity .entity-buttons button:hover {
+  background-color: #0D47A1;
+}
+
+.entities-table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+.entities-table th {
+  background-color: #f2f2f2;
+}
+.entities-table tr:hover {
+  background-color: #f5f5f5;
+}
+.entities-table .action-column {
+  display: block;
+}
+.entities-table .action-column button {
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+.entities-table .action-column button:hover {
+  background-color: #0D47A1;
+}
+.entities-table th, .entities-table td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
 .navbar {
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -94,7 +171,7 @@
   background-color: darkblue;
 }
 .navbar .cart-div:hover .order-form {
-  display: flex; /* show on hover */
+  display: flex;
 }
 
 main {
@@ -105,16 +182,12 @@ main {
   padding: 10px;
 }
 
-.medicine-operations {
-  display: flex;
-  justify-content: space-between;
-}
-.medicine-operations .medicine-buttons {
+.medicine-buttons {
   display: flex;
   justify-content: flex-start;
 }
-.medicine-operations .medicine-buttons .add-medicine-botton,
-.medicine-operations .medicine-buttons .demand-list-botton {
+.medicine-buttons .add-medicine-botton,
+.medicine-buttons .demand-list-botton {
   margin: 10px;
   padding: 10px;
   font-size: 14px;
@@ -124,8 +197,8 @@ main {
   border: none;
   margin: 10px;
 }
-.medicine-operations .medicine-buttons .add-medicine-botton:hover,
-.medicine-operations .medicine-buttons .demand-list-botton:hover {
+.medicine-buttons .add-medicine-botton:hover,
+.medicine-buttons .demand-list-botton:hover {
   background-color: #0D47A1;
 }
 
@@ -158,160 +231,6 @@ main {
 }
 .search-bar button:hover {
   background-color: red;
-}
-
-.medicine-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
-  margin: 10px auto;
-}
-.medicine-grid .medicine-entity {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
-  flex-direction: row;
-}
-.medicine-grid .medicine-entity .entity-info {
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-}
-.medicine-grid .medicine-entity .entity-info .main-info-field {
-  font-weight: bold;
-  font-size: 1.2em;
-}
-.medicine-grid .medicine-entity .entity-info .info-field {
-  font-size: 1.2em;
-}
-.medicine-grid .medicine-entity .entity-info {
-  flex-direction: column;
-}
-.medicine-grid .medicine-entity .entity-buttons button {
-  margin: 10px;
-  padding: 10px;
-  font-size: 14px;
-  background-color: #007bff;
-  color: white;
-  border-radius: 10px;
-  border: none;
-}
-.medicine-grid .medicine-entity .entity-buttons button:hover {
-  background-color: #0D47A1;
-}
-
-.orders-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
-  margin: 10px auto;
-}
-.orders-grid .order-entity {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
-  flex-direction: row;
-}
-.orders-grid .order-entity .entity-info {
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-}
-.orders-grid .order-entity .entity-info .main-info-field {
-  font-weight: bold;
-  font-size: 1.2em;
-}
-.orders-grid .order-entity .entity-info .info-field {
-  font-size: 1.2em;
-}
-.orders-grid .order-entity .entity-info {
-  flex-direction: column;
-}
-.orders-grid .order-entity .entity-buttons button {
-  margin: 10px;
-  padding: 10px;
-  font-size: 14px;
-  background-color: #007bff;
-  color: white;
-  border-radius: 10px;
-  border: none;
-}
-.orders-grid .order-entity .entity-buttons button:hover {
-  background-color: #0D47A1;
-}
-
-.users-table {
-  border-collapse: collapse;
-  width: 100%;
-  table-layout: fixed;
-}
-.users-table th {
-  background-color: #f2f2f2;
-}
-.users-table tr:hover {
-  background-color: #f5f5f5;
-}
-.users-table .action-column {
-  display: block;
-}
-.users-table th, .users-table td {
-  text-align: left;
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-}
-.users-table button {
-  margin: 10px;
-  padding: 10px;
-  font-size: 14px;
-  background-color: #007bff;
-  color: white;
-  border-radius: 10px;
-  border: none;
-}
-.users-table button:hover {
-  background-color: #0D47A1;
-}
-
-.orders-table {
-  border-collapse: collapse;
-  width: 100%;
-  table-layout: fixed;
-}
-.orders-table th {
-  background-color: #f2f2f2;
-}
-.orders-table tr:hover {
-  background-color: #f5f5f5;
-}
-.orders-table .action-column {
-  display: block;
-}
-.orders-table th, .orders-table td {
-  text-align: left;
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-}
-.orders-table button {
-  margin: 10px;
-  padding: 10px;
-  font-size: 14px;
-  background-color: #007bff;
-  color: white;
-  border-radius: 10px;
-  border: none;
-}
-.orders-table button:hover {
-  background-color: #0D47A1;
 }
 
 .login-dialog,

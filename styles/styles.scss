@@ -21,77 +21,6 @@
   }
 }
 
-@mixin entities-grid{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
-  margin: 10px auto;
-}
-
-@mixin grid-entity{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
-  .entity-info{
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    .main-info-field {
-      font-weight: bold;
-      font-size: 1.2em;
-    }
-    
-    .info-field {
-      font-size: 1.2em;
-    }
-  }
-
-  flex-direction: row;
-    .entity-info{
-      flex-direction: column;
-    }
-    
-  .entity-buttons{
-    button{
-      @include main-button();
-    }
-  }
-}
-
-@mixin entities-table{
-  border-collapse: collapse;
-  width: 100%;
-  table-layout: fixed;
-
-  th {
-    background-color: $table-row-color;
-  }
-
-  tr:hover{
-    background-color: $table-row-hover-color;
-  }
-
-  .action-column{
-    display: block;
-  }
-
-  th, td {
-    text-align: left;
-    padding: 8px;
-    border-bottom: 1px solid $border-color;
-  }
-
-  button{
-    @include main-button;
-    
-  }
-}
-
 @mixin dialog{
   display: none;
   position: fixed;
@@ -113,6 +42,75 @@
   border-top-right-radius: 10px;
   background-color: $main-button-color;
   height: 25px;
+}
+
+.entities-grid{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 10px auto;
+
+  .grid-entity{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    .entity-info{
+      display: flex;
+      width: 100%;
+      justify-content: space-evenly;
+      .main-info-field {
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+      
+      .info-field {
+        font-size: 1.2em;
+      }
+    }
+  
+    flex-direction: row;
+      .entity-info{
+        flex-direction: column;
+      }
+      
+    .entity-buttons{
+      button{
+        @include main-button();
+      }
+    }
+  }
+}
+
+.entities-table{
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+
+  th {
+    background-color: $table-row-color;
+  }
+
+  tr:hover{
+    background-color: $table-row-hover-color;
+  }
+
+  .action-column{
+    display: block;
+    button{
+      @include main-button();
+    }
+  }
+
+  th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid $border-color;
+  }
 }
 
 .navbar {
@@ -218,7 +216,7 @@
     }
     
     &:hover .order-form {
-      display: flex; /* show on hover */
+      display: flex; 
     }
   }
   
@@ -228,19 +226,14 @@ main{
   @include layot-element;
 }
 
-.medicine-operations{
+.medicine-buttons{
   display: flex;
-  justify-content: space-between;
-  .medicine-buttons{
-    display: flex;
-    justify-content: flex-start;
-    .add-medicine-botton,
-    .demand-list-botton{
-      @include main-button;
-      margin: 10px;
-    }
+  justify-content: flex-start;
+  .add-medicine-botton,
+  .demand-list-botton{
+    @include main-button;
+    margin: 10px;
   }
-  
 }
 
 .search-bar {
@@ -276,29 +269,6 @@ main{
   }
 }
 
-.medicine-grid {
-  @include entities-grid;
-
-  .medicine-entity {
-    @include grid-entity;
-  }
-}
-
-.orders-grid {
-  @include entities-grid;
-
-  .order-entity {
-    @include grid-entity;
-  }
-}
-
-.users-table {
-  @include entities-table;
-}
-
-.orders-table {
-  @include entities-table;
-}
 
 .login-dialog,
 .user-create-dialog,
