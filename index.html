@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Service</title>
+    <link rel="stylesheet" href="styles/styles.css">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="./index.html" class="logo">Pharmacy Service</a>
+        <ul class="nav-links">
+          <li><a onclick="openDialog('.login-dialog')">Log in</a></li>
+          <div class="login-dialog">
+            <div class="login-dialog-header">
+              <h2>Log in</h2>
+              <button class="dialog-close" onclick="closeDialog('.login-dialog')">&times;</button>
+            </div>
+            <form class="login-dialog-form">
+              <div class="form-group">
+                <label for="user-email">Email</label>
+                <input type="email" id="user-email" name="user-email" required>
+              </div>
+              <div class="form-group">
+                <label for="user-password">Password</label>
+                <input type="password" id="user-password" name="user-password" required>
+              </div>
+              <button type="submit" class="submit-btn">Submit</button>
+            </form>
+          </div>        
+          <li><a onclick="openDialog('.user-create-dialog')">Sign up</a></li>
+          <div class="user-create-dialog">
+            <div class="user-create-dialog-header">
+              <h2>Sign up</h2>
+              <button class="dialog-close" onclick="closeDialog('.user-create-dialog')">&times;</button>
+            </div>
+            <form class="user-create-dialog-form">
+              <div class="form-group">
+                <label for="user-name">Username</label>
+                <input type="text" id="user-name" name="user-name" required>
+              </div>
+              <div class="form-group">
+                <label for="user-email">Email</label>
+                <input type="email" id="user-email" name="user-email" required>
+              </div>
+              <div class="form-group">
+                <label for="user-address">Address</label>
+                <input type="text" id="user-address" name="user-address" required>
+              </div>
+              <div class="form-group">
+                <label for="user-password">Password</label>
+                <input type="password" id="user-password" name="user-password" required>
+              </div>
+              <div class="form-group">
+                <label for="user-password-confirm">Confirm password</label>
+                <input type="password" id="user-password-confirm" name="user-password-confirm" required>
+              </div>
+              <button type="submit" class="submit-btn">Submit</button>
+            </form>
+          </div>          
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="search-bar">
+        <input type="text" placeholder="Search">
+        <button>Go</button>
+      </div>   
+      <div class="entities-grid">
+        <div class="grid-entity">
+          <div class="entity-info">
+            <div class="main-info-field">Medicine 1</div>
+            <div class="info-field">$10</div>
+          </div>
+          <div class="entity-buttons">
+            <button class="more-info-button">More info</button>
+          </div>
+        </div>
+        <div class="grid-entity">
+          <div class="entity-info">
+            <div class="main-info-field">Medicine 2</div>
+            <div class="info-field">$20</div>
+          </div>
+          <div class="entity-buttons">
+            <button class="more-info-button">More info</button>
+          </div>
+        </div>
+        <div class="grid-entity">
+          <div class="entity-info">
+            <div class="main-info-field">Medicine 3</div>
+            <div class="info-field">$30</div>
+          </div>
+          <div class="entity-buttons">
+            <button class="more-info-button">More info</button>
+          </div>
+        </div>
+        <div class="grid-entity">
+          <div class="entity-info">
+            <div class="main-info-field">Medicine 4</div>
+            <div class="info-field">$40</div>
+          </div>
+          <div class="entity-buttons">
+            <button class="more-info-button">More info</button>
+          </div>
+        </div>
+      </div>
+      <div class="medicine-info-dialog">
+        <div class="dialog-top"></div>
+        <h2 class="main-info-name">Medicine Name</h2>
+        <p class="info-field">Price: $10.00</p>
+        <p class="info-field">Quantity: 20</p>
+        <p class="info-field">Description: This medicine helps with headaches and fever.</p>
+        <button class="close-button" onclick="closeDialog('.medicine-info-dialog');">Close</button>
+      </div>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
