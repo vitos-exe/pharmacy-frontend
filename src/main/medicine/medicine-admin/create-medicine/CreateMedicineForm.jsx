@@ -1,4 +1,4 @@
-import FormGroup from "../../../../FormGroup";
+import FormGroup from "../../../../utils/FormGroup";
 import { useState, useContext } from "react";
 import { AppContext } from "../../../../App";
 import { MedicineContext } from "../../Medicine";

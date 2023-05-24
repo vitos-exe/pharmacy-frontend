@@ -1,4 +1,4 @@
-function FormGroup(props){
+export default function FormGroup(props){
     const field = props.field;
     var type = ['email', 'password'].includes(field) ? field : 'text'; 
 
@@ -20,5 +20,3 @@ function FormGroup(props){
         </div>
     ); 
 }
-
-export default FormGroup;

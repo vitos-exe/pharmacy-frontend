@@ -1,6 +1,7 @@
 import cart from "../cart.png"
 import { AppContext } from "../App";
 import { useContext } from "react";
+import {Navigate} from "react-router-dom";
 
 function Cart(){
     const {orderItems, setOrderItems, user} = useContext(AppContext);
@@ -31,16 +32,17 @@ function Cart(){
             body: JSON.stringify({order_items: orderItems}),
             headers:{
                 "Content-Type": "application/json",
-                "Authorization": "Basic " + btoa(user.email + ":" + user.password)
+                "Authorization": "Basic " + btoa(user.email + ":" + user.password + "das")
             }
-        });
+        }).catch((e) => console.log(e));
 
-        if (response.status === 200){
+        if (response.ok){
             alert("Order created");
             setOrderItems([]);
         }
-        else{
-            alert(await response.text());
+        else if ([401, 403].includes(response.status)){
+            // alert(await response.text());
+            return <Navigate to={"/"}/>;
         }
     }
 

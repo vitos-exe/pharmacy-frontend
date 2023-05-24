@@ -9,11 +9,7 @@ import Cart from "./Cart";
 function Navbar(){
     const {user} = useContext(AppContext);
 
-    const Links = {
-        "unauthorized": DefaultNavLinks,
-        "user": UserNavLinks,
-        "admin": AdminNavLinks
-    }[user.role];
+    const Links = (user.role === "user" && UserNavLinks) || (user.role === "admin" && AdminNavLinks) || DefaultNavLinks;
 
     return (
         <nav className="navbar">

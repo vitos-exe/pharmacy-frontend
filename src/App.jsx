@@ -23,8 +23,12 @@ export function App() {
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
     const storedOrderItems = JSON.parse(localStorage.getItem('orderItems'));
-    setUser(storedUser);
-    setOrderItems(storedOrderItems);
+    if (storedUser !== null){
+      setUser(storedUser);
+    }
+    if (storedOrderItems !== null){
+      setOrderItems(storedOrderItems);
+    }
   }, []);
 
   useEffect(() => {
@@ -33,12 +37,10 @@ export function App() {
   }, [user, orderItems]);
 
   const NotFound = <Error title="Not found" message="Oops! The page you are looking for could not be found."/>;
-  const NoAccess = <Error title="No access" message="Oops! Seems like you are unauthorized or you don't have access to this page."/>
+  const NoAccess = <Error title="No access" message="Oops! Seems like you are unauthorized or you don't have access to this page."/>;
 
-  const Orders = {
-    "user": <UserOrders/>,
-    "admin": <AdminOrders/>
-  }[user.role];
+  const Orders = (user.role === "user" && <UserOrders/>) || (user.role === "admin" && <AdminOrders/>) || <NoAccess/>;
+  const Users = user.role === "admin" && <Users/> || <NoAccess/>;
 
   return (
     <AppContext.Provider value={{user, setUser, orderItems, setOrderItems}}>
@@ -49,8 +51,8 @@ export function App() {
         <main>
           <Routes>
             <Route index element={<Medicine/>} />
-            <Route path="users" element={user.role === "admin" ?  <Users/> : NoAccess} />
-            <Route path="orders" element={Orders || NoAccess} />
+            <Route path="users" element={Users} />
+            <Route path="orders" element={Orders} />
             <Route path="*" element={NotFound} />
           </Routes>
         </main>
