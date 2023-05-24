@@ -1,4 +1,4 @@
-import FormGroup from "../../../FormGroup";
+import FormGroup from "../../../utils/FormGroup";
 import { useState } from "react";
 
 function SignupForm(props){
