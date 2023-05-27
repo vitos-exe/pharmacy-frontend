@@ -3,9 +3,9 @@ import { useState, useEffect, useContext, createContext } from "react";
 import { AppContext } from "../../App";
 import MedicineAdminButtons from "./medicine-admin/MedicineAdminButtons";
 
-export const MedicineContext = createContext()
+export const MedicineContext = createContext();
 
-function Medicine(){
+export function Medicine(){
     const [medicine, setMedicine] = useState([]);
     const {user} = useContext(AppContext);
 
@@ -27,4 +27,3 @@ function Medicine(){
     );
 }
 
-export default Medicine;

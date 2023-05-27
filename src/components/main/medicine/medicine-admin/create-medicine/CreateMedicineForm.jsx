@@ -31,7 +31,7 @@ function CreateMedicineForm(props){
             setMedicine((prev) => [...prev, json]);
         }
         else{
-            alert(response.status + await response.text());
+            alert(response.status + " " + await response.text());
         }
 
         props.closePopUp();
