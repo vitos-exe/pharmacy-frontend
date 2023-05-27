@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { AppContext } from "../../App";
 import { useContext, useState } from "react";
 import EditPopUp from "./edit/EditDialog";
+import EditDialog from "./edit/EditDialog";
 
 function AdminNavLinks(){  
     const [editDialogIsOpened, setEditDialogIsOpened] = useState(false);
@@ -21,7 +22,7 @@ function AdminNavLinks(){
             <li><Link to="orders">Orders</Link></li>
             <li><Link to="users">Users</Link></li>
             <li onClick={() => setEditDialogIsOpened(true)}>Edit</li>
-            {editDialogIsOpened && (<EditPopUp closeDialog={() => setEditDialogIsOpened(false)}/>)}
+            {editDialogIsOpened && (<EditDialog closeDialog={() => setEditDialogIsOpened(false)}/>)}
             <li><Link to="" onClick={logout}>Logout</Link></li>
         </ul>
     );

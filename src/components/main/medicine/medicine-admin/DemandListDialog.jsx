@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { AppContext } from "../../../App";
 
-function DemandlistDialog(props){
+function DemandListDialog(props){
     const [demandList, setDemandList] = useState([]);
     const {user} = useContext(AppContext);
     
@@ -37,4 +37,4 @@ function DemandlistDialog(props){
     );
 }
 
-export default DemandlistDialog;
+export default DemandListDialog;
