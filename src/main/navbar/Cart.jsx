@@ -27,6 +27,12 @@ function Cart(){
 
     async function makeOrder(e){
         e.preventDefault();
+
+        if (orderItems.length === 0){
+            alert("Your cart is empty!");
+            return;
+        }
+
         const response = await fetch("http://localhost:8080/order/", {
             method: "POST",
             body: JSON.stringify({order_items: orderItems}),

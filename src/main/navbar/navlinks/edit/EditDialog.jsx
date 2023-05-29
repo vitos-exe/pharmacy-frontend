@@ -7,7 +7,7 @@ function EditDialog(props){
                 <h2>Edit account</h2>
                 <button onClick={props.closeDialog} className="dialog-close">X</button>
             </div>
-            <EditForm closePopUp={props.closeDialog}/>
+            <EditForm closeDialog={props.closeDialog}/>
         </div>
     );
 }

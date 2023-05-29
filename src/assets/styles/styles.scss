@@ -1,11 +1,10 @@
 @import 'colors';
 
-@mixin layot-element{
-  background-color: white;
+@mixin layout-element {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  margin: 10px;
-  padding: 10px;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 20px;
 }
 
 @mixin main-button{
@@ -14,7 +13,7 @@
   font-size: 14px;
   background-color: $main-button-color;
   color: white;
-  border-radius: 10px;    
+  border-radius: 20px;
   border: none;
   &:hover {
     background-color: $main-button-hover-color;
@@ -53,30 +52,23 @@
 
   .grid-entity{
     display: flex;
-    flex-direction: column;
     align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    border: 0.25px solid;
+    border-radius: 30px;
     padding: 10px;
-    margin-bottom: 10px;
     .entity-info{
       display: flex;
       width: 100%;
       justify-content: space-evenly;
+      flex-direction: column;
       .main-info-field {
         font-weight: bold;
         font-size: 1.2em;
       }
-      
       .info-field {
         font-size: 1.2em;
       }
     }
-  
-    flex-direction: row;
-      .entity-info{
-        flex-direction: column;
-      }
       
     .entity-buttons{
       button{
@@ -115,7 +107,7 @@
 }
 
 .navbar {
-  @include layot-element;
+  @include layout-element;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -167,7 +159,7 @@
       background-color: white;
       padding-bottom: 10px;
       border-radius: 10px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
       .dialog-top{
         @include dialog-top;
@@ -183,7 +175,7 @@
           margin-right: 1rem;
         }
     
-        nput[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button {
           -webkit-appearance: none;
           appearance: none;
@@ -226,7 +218,7 @@
 }
 
 main{
-  @include layot-element;
+  @include layout-element;
 }
 
 .medicine-buttons{

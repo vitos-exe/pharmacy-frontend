@@ -21,7 +21,7 @@ export function Medicine(){
         <MedicineContext.Provider value={{medicine, setMedicine}}>
             {user.role === "admin" && <MedicineAdminButtons/>}
             <div className="entities-grid">
-                {medicine.map((entry, i) => <MedicineEntity data={entry} key={i}/>)}
+                {medicine.length > 0 && medicine.map((entry, i) => <MedicineEntity data={entry} key={i}/>)}
             </div>
         </MedicineContext.Provider>
     );

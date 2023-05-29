@@ -16,23 +16,23 @@ function EditForm(props){
     async function performAccountEdit(e){
         e.preventDefault();
 
-        const fileteredFormData = Object.fromEntries(Object.entries(formData).filter(([key, value]) => value !== null && value !== ''));
+        const filteredFormData = Object.fromEntries(Object.entries(formData).filter(([key, value]) => value !== null && value !== ''));
 
-        if ('password' in fileteredFormData && 
-            'confirm-password' in fileteredFormData && 
-            fileteredFormData['password'] !== fileteredFormData['confirm-password'])
+        if ('password' in filteredFormData &&
+            'confirm-password' in filteredFormData &&
+            filteredFormData['password'] !== filteredFormData['confirm-password'])
         {
             alert('Passwords don\'t match');
             return;
         }
 
-        if (('password' in fileteredFormData) ^ ('confirm-password' in fileteredFormData)){
+        if (('password' in filteredFormData) ^ ('confirm-password' in filteredFormData)){
             alert("Enter both passwords");
             return; 
         }
 
         const confirmPassword = 'confirm-password';
-        const {[confirmPassword]: _, ...json} = fileteredFormData;
+        const {[confirmPassword]: _, ...json} = filteredFormData;
 
         const response = await fetch('http://localhost:8080/user/' + user.id, {
             method: "PUT",
@@ -45,6 +45,12 @@ function EditForm(props){
 
         if (response.status === 200){
             alert("User updated");
+            if (filteredFormData["email"] !== null){
+                setUser({...user, email: filteredFormData["email"]});
+            }
+            if (filteredFormData["password"] !== null){
+                setUser({...user, password: filteredFormData["password"]});
+            }
             props.closeDialog();
         }
         else{
@@ -63,7 +69,7 @@ function EditForm(props){
             role: "unauthorized",
             id: null,
             email: null,
-            passoword: null
+            password: null
         });
     }
 

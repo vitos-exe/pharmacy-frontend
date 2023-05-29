@@ -41,6 +41,7 @@ function MedicineEditForm(props){
             method: "DELETE",
             headers: {"Authorization": "Basic " +  btoa(user.email + ":" + user.password)}
         }).catch(e => console.log(e));
+        props.closeDialog();
     }
 
     return (

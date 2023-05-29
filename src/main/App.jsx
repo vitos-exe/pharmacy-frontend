@@ -36,18 +36,8 @@ export function App() {
     localStorage.setItem("orderItems", JSON.stringify(orderItems));
   }, [user, orderItems]);
 
-  const NotFound = Error({
-    title: "Not found",
-    message: "Oops! The page you are looking for could not be found."
-  });
-
-  const NoAccess = Error({
-    title: "No access",
-    message: "Oops! Seems like you are unauthorized or you don't have access to this page."
-  });
-
-  const OrdersComponent = (user.role === "user" && UserOrders) || (user.role === "admin" && AdminOrders) ||  NoAccess;
-  const UsersComponent = user.role === "admin" && Users || NoAccess;
+  const NotFound = <Error title="Not found" message="Oops! The page you are looking for could not be found."/>;
+  const NoAccess = <Error title="No access" message="Oops! Seems like you are unauthorized or you don't have access to this page."/>;
 
   return (
     <AppContext.Provider value={{user, setUser, orderItems, setOrderItems}}>
@@ -58,9 +48,9 @@ export function App() {
         <main>
           <Routes>
             <Route index element={<Medicine/>} />
-            <Route path="users" element={<UsersComponent/>} />
-            <Route path="orders" element={<OrdersComponent/>} />
-            <Route path="*" element={<NotFound/>} />
+            <Route path="users" element={user.role === "admin" ? <Users/> : NotFound} />
+            <Route path="orders" element={(user.role === "user" && <UserOrders/>) || (user.role === "admin" && <AdminOrders/>) ||  NoAccess} />
+            <Route path="*" element={NotFound} />
           </Routes>
         </main>
       </BrowserRouter>

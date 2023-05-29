@@ -4,6 +4,7 @@ import OrderInfoDialog from "../OrderInfoDialog";
 
 function AdminOrders(){
     const [orders, setOrders] = useState([]);
+    const [infoDialogData, setInfoDialogData] = useState(null);
     const [infoDialogIsOpen, setInfoDialogIsOpen] = useState(false);
     const {user} = useContext(AppContext);
 
@@ -25,8 +26,12 @@ function AdminOrders(){
             <td>{order.status[0].toUpperCase() + order.status.slice(1)}</td>
             <td className="action-column">
                 <button className="change-status-button" onClick={() => changeStatus(index, order.status)}>Change status</button>
-                <button className="order-details-button" onClick={() => setInfoDialogIsOpen(true)}>More info</button>
-                {infoDialogIsOpen && <OrderInfoDialog data={order} closeDialog={() => setInfoDialogIsOpen(false)}/>}
+                <button className="order-details-button" onClick={() => {
+                    if (!infoDialogData) {
+                        setInfoDialogData(order);
+                    }
+                }}>More info</button>
+                {/*{!infoDialogIsOpen && <OrderInfoDialog data={order} closeDialog={() => setInfoDialogIsOpen(false)}/>}*/}
             </td>
         </tr>)
     }
@@ -55,19 +60,22 @@ function AdminOrders(){
     }
 
     return (
-        <table className="entities-table">
-            <thead>
+        <>
+            <table className="entities-table">
+                <thead>
                 <tr>
                     <th>Order ID</th>
                     <th>Time</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
-            </thead>
-            <tbody>
-                {orders.map((order, i) => toTableRow(order, i + 1))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {orders.sort((a, b) => a.id - b.id).map((order, i) => toTableRow(order, order.id))}
+                </tbody>
+            </table>
+            {infoDialogData && <OrderInfoDialog data={infoDialogData} closeDialog={() => setInfoDialogData(null)}/>}
+        </>
     );
 }
 
