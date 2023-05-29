@@ -1,7 +1,6 @@
 import cart from "../../assets/cart.png"
 import { AppContext } from "../App";
 import { useContext } from "react";
-import {Navigate} from "react-router-dom";
 
 function Cart(){
     const {orderItems, setOrderItems, user} = useContext(AppContext);

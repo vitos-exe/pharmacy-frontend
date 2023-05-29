@@ -5,7 +5,6 @@ import OrderInfoDialog from "../OrderInfoDialog";
 function AdminOrders(){
     const [orders, setOrders] = useState([]);
     const [infoDialogData, setInfoDialogData] = useState(null);
-    const [infoDialogIsOpen, setInfoDialogIsOpen] = useState(false);
     const {user} = useContext(AppContext);
 
     useEffect(() => {
@@ -31,7 +30,6 @@ function AdminOrders(){
                         setInfoDialogData(order);
                     }
                 }}>More info</button>
-                {/*{!infoDialogIsOpen && <OrderInfoDialog data={order} closeDialog={() => setInfoDialogIsOpen(false)}/>}*/}
             </td>
         </tr>)
     }

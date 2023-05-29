@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { AppContext } from "../../App";
 import { useContext, useState } from "react";
-import EditPopUp from "./edit/EditDialog";
 import EditDialog from "./edit/EditDialog";
 
 function AdminNavLinks(){  

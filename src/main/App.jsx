@@ -1,7 +1,7 @@
 import Navbar from "./navbar/Navbar";
 import '../assets/styles/styles.scss'
 import { createContext, useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import {Medicine} from "./main/medicine/Medicine";
 import Users from "./main/users/Users";
 import UserOrders from "./main/user-orders/UserOrders";
@@ -41,19 +41,17 @@ export function App() {
 
   return (
     <AppContext.Provider value={{user, setUser, orderItems, setOrderItems}}>
-      <BrowserRouter>
-        <header>
-          <Navbar/>
-        </header>
-        <main>
-          <Routes>
-            <Route index element={<Medicine/>} />
-            <Route path="users" element={user.role === "admin" ? <Users/> : NotFound} />
-            <Route path="orders" element={(user.role === "user" && <UserOrders/>) || (user.role === "admin" && <AdminOrders/>) ||  NoAccess} />
-            <Route path="*" element={NotFound} />
-          </Routes>
-        </main>
-      </BrowserRouter>
+      <header>
+        <Navbar/>
+      </header>
+      <main>
+        <Routes>
+          <Route index element={<Medicine/>} />
+          <Route path="users" element={user.role === "admin" ? <Users/> : NotFound} />
+          <Route path="orders" element={(user.role === "user" && <UserOrders/>) || (user.role === "admin" && <AdminOrders/>) ||  NoAccess} />
+          <Route path="*" element={NotFound} />
+        </Routes>
+      </main>
     </AppContext.Provider>
   );
 }
