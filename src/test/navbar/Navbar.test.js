@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Navbar from "../../components/navbar/Navbar";
-import {AppContext} from "../../components/App";
+import Navbar from "../../main/navbar/Navbar";
+import {AppContext} from "../../main/App";
 
 // Mocking the context value
 const mockContextValue = {
@@ -10,18 +10,18 @@ const mockContextValue = {
     },
 };
 
-// Mocking the components
-jest.mock('../../components/navbar/Logo', () => () => <div data-testid="mock-logo" />);
-jest.mock('../../components/navbar/navlinks/DefaultNavLinks', () => () => (
+// Mocking the main
+jest.mock('../../main/navbar/Logo', () => () => <div data-testid="mock-logo" />);
+jest.mock('../../main/navbar/navlinks/DefaultNavLinks', () => () => (
     <div data-testid="mock-default-navlinks" />
 ));
-jest.mock('../../components/navbar/navlinks/UserNavLinks', () => () => (
+jest.mock('../../main/navbar/navlinks/UserNavLinks', () => () => (
     <div data-testid="mock-user-navlinks" />
 ));
-jest.mock('../../components/navbar/navlinks/AdminNavLinks', () => () => (
+jest.mock('../../main/navbar/navlinks/AdminNavLinks', () => () => (
     <div data-testid="mock-admin-navlinks" />
 ));
-jest.mock('../../components/navbar/Cart', () => () => <div data-testid="mock-cart" />);
+jest.mock('../../main/navbar/Cart', () => () => <div data-testid="mock-cart" />);
 
 describe('Navbar', () => {
     beforeEach(() => {

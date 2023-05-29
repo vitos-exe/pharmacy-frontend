@@ -1,9 +1,9 @@
 import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react";
 import CreateMedicineForm
-    from "../../../../../components/main/medicine/medicine-admin/create-medicine/CreateMedicineForm";
-import {AppContext} from "../../../../../components/App";
-import {MedicineContext} from "../../../../../components/main/medicine/Medicine";
+    from "../../../../../main/main/medicine/medicine-admin/create-medicine/CreateMedicineForm";
+import {AppContext} from "../../../../../main/App";
+import {MedicineContext} from "../../../../../main/main/medicine/Medicine";
 
 // Mock the AppContext value
 const user = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import FormGroup from "../../components/utils/FormGroup";
+import FormGroup from "../../main/utils/FormGroup";
 
 describe('FormGroup', () => {
     it('renders the component correctly', () => {

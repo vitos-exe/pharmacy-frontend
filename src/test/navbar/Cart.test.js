@@ -1,7 +1,7 @@
 import React from 'react';
 import {render, screen, fireEvent, act, waitFor} from '@testing-library/react';
-import Cart from "../../components/navbar/Cart";
-import {AppContext} from "../../components/App";
+import Cart from "../../main/navbar/Cart";
+import {AppContext} from "../../main/App";
 
 describe('Cart component', () => {
 

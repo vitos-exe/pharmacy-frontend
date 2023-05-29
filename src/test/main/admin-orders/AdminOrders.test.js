@@ -1,7 +1,7 @@
 import React from "react";
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
-import AdminOrders from "../../../components/main/admin-orders/AdminOrders";
-import {AppContext} from "../../../components/App";
+import AdminOrders from "../../../main/main/admin-orders/AdminOrders";
+import {AppContext} from "../../../main/App";
 import userEvent from "@testing-library/user-event";
 
 describe("AdminOrders", () => {

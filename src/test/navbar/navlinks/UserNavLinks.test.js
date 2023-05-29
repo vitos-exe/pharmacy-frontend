@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import {AppContext} from "../../../components/App";
-import UserNavLinks from "../../../components/navbar/navlinks/UserNavLinks";
+import {AppContext} from "../../../main/App";
+import UserNavLinks from "../../../main/navbar/navlinks/UserNavLinks";
 
 describe("UserNavLinks", () => {
     test("renders user navigation links correctly", () => {

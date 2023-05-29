@@ -1,8 +1,8 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
-import {AppContext} from "../../../components/App";
-import AdminNavLinks from "../../../components/navbar/navlinks/AdminNavLinks";
+import {AppContext} from "../../../main/App";
+import AdminNavLinks from "../../../main/navbar/navlinks/AdminNavLinks";
 
 describe("AdminNavLinks", () => {
     const setUser = jest.fn();

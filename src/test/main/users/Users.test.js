@@ -1,6 +1,6 @@
 import {render, fireEvent, waitFor, act} from "@testing-library/react";
-import Users from "../../../components/main/users/Users";
-import {AppContext} from "../../../components/App";
+import Users from "../../../main/main/users/Users";
+import {AppContext} from "../../../main/App";
 // Mock the AppContext value
 const user = {
     email: "test@example.com",

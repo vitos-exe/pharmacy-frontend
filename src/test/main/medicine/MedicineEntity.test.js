@@ -1,9 +1,9 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import {AppContext} from "../../../components/App";
-import MedicineEntity from "../../../components/main/medicine/MedicineEntity";
-import MedicineInfoDialog from "../../../components/main/medicine/MedicineInfoDialog";
-import MedicineEditDialog from "../../../components/main/medicine/medicine-admin/edit-medicine/MedicineEditDialog";
+import {AppContext} from "../../../main/App";
+import MedicineEntity from "../../../main/main/medicine/MedicineEntity";
+import MedicineInfoDialog from "../../../main/main/medicine/MedicineInfoDialog";
+import MedicineEditDialog from "../../../main/main/medicine/medicine-admin/edit-medicine/MedicineEditDialog";
 import {BrowserRouter} from "react-router-dom";
 
 describe("MedicineEntity", () => {

@@ -1,9 +1,9 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import DefaultNavLinks from "../../../components/navbar/navlinks/DefaultNavLinks";
-import LoginDialog from "../../../components/navbar/navlinks/login/LoginDialog";
-import SignupDialog from "../../../components/navbar/navlinks/signup/SignupDialog";
-import {AppContext} from "../../../components/App";
+import DefaultNavLinks from "../../../main/navbar/navlinks/DefaultNavLinks";
+import LoginDialog from "../../../main/navbar/navlinks/login/LoginDialog";
+import SignupDialog from "../../../main/navbar/navlinks/signup/SignupDialog";
+import {AppContext} from "../../../main/App";
 describe("DefaultNavLinks", () => {
     test("renders log in and sign up links", () => {
         const { getByText } = render(<DefaultNavLinks />);

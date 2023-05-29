@@ -1,7 +1,7 @@
 import React from "react";
 import { render, waitFor } from "@testing-library/react";
-import DemandListDialog from "../../../../components/main/medicine/medicine-admin/DemandListDialog";
-import {AppContext} from "../../../../components/App";
+import DemandListDialog from "../../../../main/main/medicine/medicine-admin/DemandListDialog";
+import {AppContext} from "../../../../main/App";
 
 const user = {
     email: "test@example.com",

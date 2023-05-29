@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, waitFor, screen } from '@testing-library/react';
-import UserOrders from "../../../components/main/user-orders/UserOrders";
-import {AppContext} from "../../../components/App";
+import UserOrders from "../../../main/main/user-orders/UserOrders";
+import {AppContext} from "../../../main/App";
 
 describe('UserOrders', () => {
     it('renders the component and fetches orders', async () => {
